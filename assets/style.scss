@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import '@/assets/variables.scss';
+
+
+
+$navigation-active-color: rgb(16, 56, 64, 0.25);
+$box-shadow-root: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+$font-family-root: 'Montserrat', sans-serif;
+
+$primary: #0D4A56;
+$secondary: #107B88;
+$tertiary: #46A1AA;
+$quanterary: #B4D9DB;
+$pentanary: #F9F9F4;
+
+
+$primaryFont: #102C31;
+$secondaryFont: #0f2b30bf;
+$tertiaryFont: #102c3180;
+
+
+* {
+    padding: 0;
+    margin: 0;
+    text-transform: none !important;
+}
+html {
+    background-color: $pentanary !important;
+    box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+    .v-main {
+        // --- MAIN CONFIG --- //
+        font-family: $font-family-root !important;
+        background-color: $pentanary !important;
+
+        
+        // ------- ALL INPUTS CONFIG ------- //
+        .theme--light.v-label {
+            color: $quanterary; // label color
+        }
+        .theme--light.v-text-field--outlined:not(.v-input--is-focused):not(.v-input--has-state):not(.v-input--is-disabled) > .v-input__control > .v-input__slot:hover fieldset {
+            color: $tertiary !important; // hover of input
+        }
+        .theme--light.v-text-field--outlined:not(.v-input--is-focused):not(.v-input--has-state) > .v-input__control > .v-input__slot fieldset {
+            color: $quanterary !important; // input border color
+        }
+        .theme--light.v-input input, .theme--light.v-input textarea {
+            color: $primary; // font color
+        }
+        .v-input--is-focused fieldset {
+            border: 2px solid $secondary !important; // input ACTIVE color
+        }
+
+
+        .banner-card {
+            background: linear-gradient(150deg, rgba(16,44,49,1) 0%, rgba(16,123,136,1) 75%) !important;
+            .banner-card-img {
+                filter: drop-shadow(-20px 25px 20px rgba(249, 249, 244, .5)) !important;
+            }
+            .logo-bg {
+                background: rgba(255, 255, 255, 0.25);
+                border-radius: 16px;
+                backdrop-filter: blur(7.5px);
+            }
+        }
+
+        .song-card {
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px !important;
+            .play-btn {
+                box-shadow: $tertiary 0px 4px 12px; 
+                background: linear-gradient(150deg, rgba(16,44,49,1) 0%, rgba(16,123,136,1) 75%);
+            }
+        }
+        // .category-bean.quanterary.v-slide-item--active.v-chip--active.v-chip--clickable.v-chip--no-color {
+        //     background: $primary !important;
+        //     color: $pentanary !important;
+        // }
+
+        .opened-song-card {
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px !important;
+            .close-btn::before {
+                opacity: 0;
+            }
+            .play-pause-btn {
+                box-shadow: $tertiary 0px 4px 12px !important; 
+                background: linear-gradient(150deg, rgba(16,44,49,1) 0%, rgba(16,123,136,1) 75%) !important;
+            }         
+            .volume-slider .v-slider--horizontal .v-slider__track-container {
+                height: 10px !important;
+            }
+            .volume-slider .v-slider__thumb {
+                width: 18px;
+                height: 18px;
+            }           
+        }  
+        
+        .login-card {
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px !important;
+            .signin-btn{
+                box-shadow: rgba(13, 74, 86, 0.25) 0px 8px 8px !important; 
+                background: linear-gradient(45deg, rgba(16,44,49,1) 0%, rgba(16,123,136,1) 75%);
+            }
+            .signup-btn{
+                box-shadow: rgba(13, 74, 86, 0.25) 0px 8px 8px !important; 
+                background: linear-gradient(45deg, rgba(16,44,49,1) 0%, rgba(16,123,136,1) 75%);
+            }
+        }
+
+
+        // --- DIVIDER CONFIG --- //
+        .divider {
+            line-height: 1em;
+            position: relative;
+            outline: 0;
+            border: 0;
+            color: black;
+            text-align: center;
+            height: 1.5em;
+            &:before {
+                content: '';
+                background: linear-gradient(to right, transparent, $quanterary, transparent) !important;
+                position: absolute;
+                left: 0;
+                top: 50%;
+                width: 100%;
+                height: 1px;
+            }
+            &:after {
+                content: attr(data-content);
+                position: relative;
+                display: inline-block; 
+                color: $secondary !important;
+                font-weight: bold !important;
+                padding: 0 .5em;        
+                line-height: 1.5em;
+                color: $quanterary;
+                background-color: white;
+            }
+        }
+
+
+        // --- NAV CONFIG --- //
+        .navigation .v-list-item--link::before {
+            background: none !important;
+        }
+        .navigation .navItem.v-list-item {
+            background: none;
+        }
+        .navigation .navItem.v-list-item--active {
+            border-radius: 0px !important;
+            border-left: 3px solid $primary;
+        }
+        .navigation .v-list-item--active .dropdownNavItem {
+            box-shadow: none !important;  
+        }
+        .navigation .v-list-item--hover {
+            background: none;  
+        }
+        .navigation .v-list-item .v-list-item__title {           
+            color: $primary !important; 
+        }
+        .navigation .v-list-item .v-icon {
+            color: $pentanary;
+            box-shadow: rgba(13, 74, 86, 0.25) 0px 8px 8px !important; 
+        }
+        .navigation .v-list-item--active .v-icon, .navigation .v-list-item--active .v-list-item__title { 
+            color: $primary !important; // ACTIVE font color
+            font-weight: 700;
+        }
+        .navigation .v-list-item--active .sectionIcon {           
+            background-color: $primary !important;
+            color: $pentanary !important;
+        }
+
+        // Drop down items
+        .navigation .navDropdownItem.v-list-item .v-icon, .navigation .navDropdownItem.v-list-item .v-list-item__title {
+            font-size: 13px;           
+            color: $secondary !important; 
+        }
+        
+
+        // CATEGORIES CONFIG
+        // .v-tabs > .v-tabs-bar{
+        //     background-color: $pentanary !important; // bar bg-color
+        // }
+
+        // .v-tabs-slider-wrapper {
+        //     display: none; // remove slider
+        // }
+        
+        // .category-bean.quanterary.primary--text.rounded-xl.font-weight-medium.v-tab.v-tab--active{
+        //     color: $pentanary !important;
+        //     background-color: $primary !important;
+        // }
+
+        
+    }
+}

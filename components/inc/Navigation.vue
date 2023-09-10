@@ -1,12 +1,12 @@
 <template>
     <div>
-        <v-app-bar class="pentanary primary--text elevation-0 ma-8 rounded-xl justify-center">
-            <v-toolbar-title class="primary--text mx-4 justify-center align-center">
+        <v-app-bar class="pentanary primaryFont--text elevation-0 ma-8 rounded-xl justify-center">
+            <v-toolbar-title class="primaryFont--text mx-4 justify-center align-center">
                 <v-img src="logo.png" width="25" height="25" contain></v-img>
             </v-toolbar-title>
             <h2>MUSIX</h2>
             <v-spacer></v-spacer>
-            <v-icon class="primary--text mx-4" @click.stop="drawer = !drawer">mdi-menu</v-icon>
+            <v-icon class="primaryFont--text mx-4" @click.stop="drawer = !drawer">mdi-menu</v-icon>
         </v-app-bar>
         <v-navigation-drawer
         v-model="drawer" class="navigation my-8 px-4 elevation-0 rounded-xl mx-auto"
@@ -14,7 +14,7 @@
         style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px !important;">
             <v-list nav dense>
                 <v-list-item to="">         
-                    <v-toolbar-title class="primary--text mr-4">
+                    <v-toolbar-title class="primaryFont--text mr-4">
                         <v-img src="logo.png" width="25" height="25" contain></v-img>
                     </v-toolbar-title>
                     <v-spacer></v-spacer>
@@ -39,7 +39,7 @@
                 <!-- Categories section -->
                 <v-list-item-group v-model="group" class="my-8">
                     <v-list-item-content>
-                        <v-list-item-title class="secondary--text px-3">
+                        <v-list-item-title class="secondaryFont--text px-3">
                             <h6>CATEGORIES</h6>
                         </v-list-item-title>
                     </v-list-item-content>
@@ -48,12 +48,12 @@
                         <v-list-item-title>Popular</v-list-item-title>
                     </v-list-item>
                 </v-list-item-group>
-                <v-divider class="divider primary my-8"></v-divider>
+                <v-divider class="divider secondaryFont my-8"></v-divider>
 
                 <!-- Styles section -->
                 <v-list-item-group v-model="group" class="my-8">
                     <v-list-item-content>
-                        <v-list-item-title class="secondary--text px-3">
+                        <v-list-item-title class="secondaryFont--text px-3">
                             <h6>STYLES</h6>
                         </v-list-item-title>
                     </v-list-item-content>
@@ -78,23 +78,6 @@
                         <v-list-item-title>Others</v-list-item-title>
                     </v-list-item>
                 </v-list-item-group>
-                <v-divider class="divider quanterary my-8"></v-divider>
-
-                <!-- Other Apps section -->
-                <v-list-item-group v-model="group" class="my-8">
-                    <v-list-item-content>
-                        <v-list-item-title class="secondary--text px-3">
-                            <h6>OTHER APPS</h6>
-                        </v-list-item-title>
-                    </v-list-item-content>
-                    <v-list-item class="navItem rounded-lg px-4 py-1" to="/video">
-                        <v-list-item-icon class="align-center">
-                            <v-img src="logo2.png" class="sectionIcon rounded" width="32"></v-img>
-                        </v-list-item-icon>
-                        <v-list-item-title>Video</v-list-item-title>
-                    </v-list-item>
-                </v-list-item-group>
-                <v-divider class="divider quanterary my-8"></v-divider>
             </v-list>
         </v-navigation-drawer>
     </div>

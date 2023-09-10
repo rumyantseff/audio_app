@@ -57,7 +57,10 @@ export default {
           tertiary: '#46A1AA',
           quanterary: '#B4D9DB',
           pentanary: '#F9F9F4',
-          primaryFont: '#102C31',
+
+          primaryFont: '#2e384d',
+          secondaryFont: '#8d9db1',
+          tertiaryFont: '#f8fafa',
         }
       }
     }

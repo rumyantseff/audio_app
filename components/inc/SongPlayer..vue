@@ -2,8 +2,8 @@
     <v-row class="mx-n6 mt-n16" mobile-breakpoint="1366">
         <v-col class="justify-center d-flex" cols="12" transition="slide-x-transition">
             <v-card class="opened-song-card rounded-xl" ref="audio" max-width="600">
-                <v-row class="primary--text mt-0 justify-end mx-0">
-                    <v-btn class="close-btn primary--text white" 
+                <v-row class="mt-0 justify-end mx-0">
+                    <v-btn class="close-btn primaryFont--text white" 
                     depressed fab v-on:click="goback"
                     before="background-color: none !important;">
                         <v-icon>mdi-close</v-icon>
@@ -15,25 +15,25 @@
                         <v-list-item>
                             <v-row>
                                 <v-col class="text-center">
-                                    <v-badge avatar bordered overlap bottom offset-x="36" offset-y="29">                                  
+                                    <v-badge avatar bordered overlap bottom offset-x="25" offset-y="20">                                  
                                         <template v-slot:badge>
-                                            <v-avatar class="rounded-lg">
+                                            <v-avatar>
                                                 <v-img :src="song.albumCover"></v-img>
                                             </v-avatar>
                                         </template>
-                                        <v-list-item-avatar class="rounded-lg primary" size="200">
+                                        <v-list-item-avatar class="rounded primary" size="200">
                                             <v-img :src="song.artistAvatar"></v-img>
                                         </v-list-item-avatar>
                                     </v-badge>
                                 </v-col>
                                 <v-col cols="12">
-                                    <v-list-item-title class="primary--text text-center text-sm font-weight-bold text-wrap" max-width="250">
+                                    <v-list-item-title class="primaryFont--text text-center text-sm font-weight-bold text-wrap" max-width="250">
                                         {{ song.artistName }}
                                     </v-list-item-title>
                                     <v-tooltip right>
                                         <template v-slot:activator="{ on, attrs }">
                                             <v-list-item-subtitle 
-                                            class="secondary--text text-center mt-1 font-weight-medium text-wrap" 
+                                            class="secondaryFont--text text-center mt-1 font-weight-medium text-wrap" 
                                             max-width="250"
                                             v-bind="attrs" v-on="on">
                                                 {{ song.songName }}
@@ -46,11 +46,11 @@
                         </v-list-item>
                         <v-list-item class="mt-4 mx-n2">
                             <v-col class="d-flex align-center">
-                                <v-btn class="primary--text" text plain depressed small>
+                                <v-btn class="primaryFont--text" text plain depressed small>
                                     <v-icon left>mdi-headphones</v-icon>
                                     {{ song.hears | formatNumber }}
                                 </v-btn>
-                                <v-btn class="primary--text" text plain depressed small @click="song.likes++">
+                                <v-btn class="primaryFont--text" text plain depressed small @click="song.likes++">
                                     <v-icon left>mdi-heart</v-icon>
                                     {{ song.likes | formatNumber }}
                                 </v-btn>
@@ -62,9 +62,9 @@
                             <v-slider 
                             v-model="percentage" 
                             class="seek-slider" 
-                            color="primary rounded-xl" 
-                            thumb-color="secondary"
-                            track-color="quanterary rounded-xl" 
+                            color="primaryFont rounded-xl" 
+                            thumb-color="primaryFont"
+                            track-color="secondaryFont rounded-xl" 
                             hide-details 
                             @click.native="setPosition()" 
                             :disabled="!loaded">
@@ -72,35 +72,35 @@
                         </v-list-item>
                         <v-list-item class="d-flex mt-n4">
                             <v-chip 
-                            class="primary--text quanterary rounded-xl font-weight-medium mx-1" small>
+                            class="primaryFont--text transparent rounded-xl font-weight-medium mx-1" small>
                                 {{ currentTime }}
                             </v-chip>
                             <v-spacer></v-spacer>
                             <v-chip 
-                            class="primary--text quanterary rounded-xl font-weight-medium mx-1" small>
+                            class="primaryFont--text transparent rounded-xl font-weight-medium mx-1" small>
                                 {{ duration }}
                             </v-chip>
                         </v-list-item>
                         <v-list-item class="d-flex align-center text-center justify-center mt-8">
                             <v-btn 
-                            class="primary--text ms-auto" rounded small icon @click="repeat">
+                            class="secondaryFont--text ms-auto" rounded small icon @click="repeat">
                                 <v-icon>mdi-repeat</v-icon>
                             </v-btn>
                             <v-btn 
-                            class="primary--text ms-4" rounded small icon @click="previous">
+                            class="primaryFont--text ms-4" rounded small icon @click="previous">
                                 <v-icon>mdi-rewind</v-icon>
                             </v-btn>
                             <v-btn 
-                            class="play-pause-btn primary pentanary--text ms-6 rounded-lg" 
+                            class="play-pause-btn primaryFont--text ms-6 rounded-lg" 
                             x-large icon @click.native="playing ? pause() : play()" :disabled="!loaded">
                                 <v-icon>{{ !playing || paused ? 'mdi-play' : 'mdi-pause' }}</v-icon>
                             </v-btn>
                             <v-btn 
-                            class="primary--text ms-6 me-4" rounded small icon @click="next">
+                            class="primaryFont--text ms-6 me-4" rounded small icon @click="next">
                                 <v-icon>mdi-fast-forward</v-icon>
                             </v-btn>
                             <v-btn 
-                            class="primary--text ms-0 me-auto" rounded small icon>
+                            class="secondaryFont--text ms-0 me-auto" rounded small icon>
                                 <v-icon>mdi-shuffle</v-icon>
                             </v-btn>
                         </v-list-item>                     
@@ -110,14 +110,14 @@
                         <v-list-item>
                             <v-btn icon @click.native="mute()" :disabled="!loaded">
                                 <v-icon>
-                                    {{ !isMuted ? 'mdi-volume-high primary--text' : 'mdi-volume-mute primary--text' }}
+                                    {{ !isMuted ? 'mdi-volume-high primaryFont--text' : 'mdi-volume-mute primaryFont--text' }}
                                 </v-icon>
                             </v-btn>                     
                             <v-slider 
                             v-model="playerVolume" 
                             class="volume-slider" 
-                            color="primary rounded-xl" 
-                            track-color="quanterary rounded-xl" 
+                            color="primaryFont rounded-xl" 
+                            track-color="secondaryFont rounded-xl" 
                             hide-details
                             thumb-label="always"
                             max="1" step="0.01" min="0">

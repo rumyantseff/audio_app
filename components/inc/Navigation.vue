@@ -1,84 +1,53 @@
 <template>
     <div>
-        <v-app-bar class="pentanary primaryFont--text elevation-0 ma-8 rounded-xl justify-center">
-            <v-toolbar-title class="primaryFont--text mx-4 justify-center align-center">
-                <v-img src="logo.png" width="25" height="25" contain></v-img>
-            </v-toolbar-title>
-            <h2>MUSIX</h2>
-            <v-spacer></v-spacer>
-            <v-icon class="primaryFont--text mx-4" @click.stop="drawer = !drawer">mdi-menu</v-icon>
-        </v-app-bar>
         <v-navigation-drawer
-        v-model="drawer" class="navigation my-8 px-4 elevation-0 rounded-xl mx-auto"
-        :clipped="true" :app="!demo" overlay-color="none" fixed floating temporary right
-        style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px !important;">
-            <v-list nav dense>
-                <v-list-item to="">         
-                    <v-toolbar-title class="primaryFont--text mr-4">
-                        <v-img src="logo.png" width="25" height="25" contain></v-img>
-                    </v-toolbar-title>
-                    <v-spacer></v-spacer>
-                    <v-icon 
-                        class="primaryFont--text mx-8" 
-                        style="box-shadow: none !important;" 
-                        @click.stop="drawer = !drawer">mdi-close
-                    </v-icon>
-                </v-list-item>
-                <v-divider class="divider primary my-4"></v-divider>
+        v-model="drawer" :mini-variant="mini" :app="!nav" width="240" mini-variant-width="72" floating 
+        class="navigation px-2 elevation-0 hidden-sm-and-down" flat permanent fixed>
+            <v-list class="mt-4">
+                <v-list-item class="mx-n2 mt-0">
+                    <v-img src="musix_logo.svg" alt="Shirtplatform logo" contain max-width="42"/>
+                    <v-list-item-title  class="primaryFont--text font-weight-medium text-h5 mx-6">Mbrosia</v-list-item-title>
+                </v-list-item> 
+            </v-list>
 
-                <!-- Main section -->
-                <v-list-item-group class="my-8" v-model="group">
-                    <v-list-item class="navItem rounded-lg px-4" to="/">
-                        <v-list-item-icon class="align-center">
-                            <v-icon class="sectionIcon rounded pa-1 secondary">mdi-home</v-icon>
+            <v-list class="mt-8" nav dense rounded>
+                <v-list-item-group v-model="group">
+                    <v-list-item class="navItem" to="/">   
+                        <v-list-item-icon>
+                            <v-icon class="primaryFont--text">mdi-home</v-icon>
                         </v-list-item-icon>
-                        <v-list-item-title>Main Page</v-list-item-title>
-                    </v-list-item>
+                        <v-list-item-content>
+                            <v-list-item-title class="primaryFont--text font-weight-bold">Home</v-list-item-title>
+                        </v-list-item-content>
+                        </v-list-item>
                 </v-list-item-group>
+            </v-list>
 
-                <!-- Categories section -->
-                <v-list-item-group v-model="group" class="my-8">
+            <v-list nav dense rounded>
+                <v-list-item-group v-model="group">
                     <v-list-item-content>
-                        <v-list-item-title class="secondaryFont--text px-3">
-                            <h6>CATEGORIES</h6>
-                        </v-list-item-title>
+                        <h6 v-show="!mini" class="mx-2 secondaryFont--text font-weight-medium text-overline">GENERS</h6>                     
                     </v-list-item-content>
-                    <v-list-item class="navItem rounded-lg px-4 py-1" to="/popular">
-                        <v-list-item-icon class="align-center"><v-icon class="sectionIcon rounded pa-1 secondary">mdi-arrow-up-bold-circle</v-icon></v-list-item-icon>
-                        <v-list-item-title>Popular</v-list-item-title>
-                    </v-list-item>
-                </v-list-item-group>
-                <v-divider class="divider secondaryFont my-8"></v-divider>
-
-                <!-- Styles section -->
-                <v-list-item-group v-model="group" class="my-8">
-                    <v-list-item-content>
-                        <v-list-item-title class="secondaryFont--text px-3">
-                            <h6>STYLES</h6>
-                        </v-list-item-title>
-                    </v-list-item-content>
-                    <v-list-item class="navItem rounded-lg px-4 py-1" to="/rock">
-                        <v-list-item-icon class="align-center"><v-icon class="sectionIcon rounded pa-1 secondary">mdi-guitar-electric</v-icon></v-list-item-icon>
-                        <v-list-item-title>Rock</v-list-item-title>
-                    </v-list-item>
-                    <v-list-item class="navItem rounded-lg px-4 py-1" to="/popular">
-                        <v-list-item-icon class="align-center"><v-icon class="sectionIcon rounded pa-1 secondary">mdi-star</v-icon></v-list-item-icon>
-                        <v-list-item-title>Pop</v-list-item-title>
-                    </v-list-item>
-                    <v-list-item class="navItem rounded-lg px-4 py-1" to="/jazz">
-                        <v-list-item-icon class="align-center"><v-icon class="sectionIcon rounded pa-1 secondary">mdi-saxophone</v-icon></v-list-item-icon>
-                        <v-list-item-title>Jazz</v-list-item-title>
-                    </v-list-item>
-                    <v-list-item class="navItem rounded-lg px-4 py-1" to="/hiphop">
-                        <v-list-item-icon class="align-center"><v-icon class="sectionIcon rounded pa-1 secondary">mdi-disc</v-icon></v-list-item-icon>
-                        <v-list-item-title>Hip-Hop</v-list-item-title>
-                    </v-list-item>
-                    <v-list-item class="navItem rounded-lg px-4 py-1" to="/others">
-                        <v-list-item-icon class="align-center"><v-icon class="sectionIcon rounded pa-1 secondary">mdi-dots-grid</v-icon></v-list-item-icon>
-                        <v-list-item-title>Others</v-list-item-title>
+                    <v-list-item class="navItem" to="/shops">   
+                        <v-list-item-icon>
+                            <v-icon class="primaryFont--text">mdi-store</v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-content>
+                            <v-list-item-title class="primaryFont--text font-weight-bold ">Styles</v-list-item-title>
+                        </v-list-item-content> 
                     </v-list-item>
                 </v-list-item-group>
             </v-list>
+
+            <template #append>
+                <v-list class="mx-" nav dense>
+                    <v-btn class="navItemCollapse" @click.stop="toggleDrawer" icon text small fab>
+                        <v-icon :class="!mini ? 'quanterary--text' : 'primaryFont--text'" icon text>
+                            {{ !mini ? 'mdi-chevron-double-left' : 'mdi-chevron-double-right' }}
+                        </v-icon>
+                    </v-btn>
+                </v-list>
+            </template>
         </v-navigation-drawer>
     </div>
 </template>
@@ -90,6 +59,8 @@ export default {
       return {
         drawer: false,
         group: null,
+        mini: true,
+        isIconAlt: true,
         
         geners: [
             ['Pop', ''],
@@ -109,7 +80,7 @@ export default {
     },
 
     computed: {
-      demo () {
+      nav () {
         switch (this.$vuetify.breakpoint.name) {
           case 'xs': return true
           case 'sm': return true
@@ -120,5 +91,11 @@ export default {
         return false
       },
     },
+
+    methods: {
+      toggleDrawer() {
+        this.mini = !this.mini
+      }
+    }
 }
 </script>

@@ -1,6 +1,7 @@
 <template>
     <v-app>
         <v-main> 
+            <incHeader />
             <incNavigation/>           
             <Nuxt />        
         </v-main>

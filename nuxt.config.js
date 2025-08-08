@@ -4,8 +4,8 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   target: 'static',
   head: {
-    titleTemplate: '%s - Catch a vibe, find yours',
-    title: 'Musix',
+    titleTemplate: '%s | Catch a vibe, find yours',
+    title: 'Mbrosia',
     htmlAttrs: {
       lang: 'en',
     },
@@ -15,7 +15,7 @@ export default {
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/logo.png' }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/musix_logo.svg' }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -53,9 +53,9 @@ export default {
       themes: {
         light: {
           primary: '#0D4A56',
-          secondary: '#107B88',
-          tertiary: '#46A1AA',
-          quanterary: '#B4D9DB',
+          secondary: '#467b88',
+          tertiary: '#c0faff',
+          quanterary: '#fb9039',
           pentanary: '#F9F9F4',
 
           primaryFont: '#2e384d',

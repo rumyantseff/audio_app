@@ -20,7 +20,7 @@
             <v-col cols="8" class="mx-auto text-center">
               <v-card-text class="secondaryFont--text">
                 Copyright © {{ new Date().getFullYear() }} created by 
-                <strong><a class="text-decoration-none secondaryFont--text" href="">VR</a></strong>
+                <strong><a class="text-decoration-none secondaryFont--text" href="">Vladislav Rumyantsev</a></strong>
               </v-card-text>
             </v-col>
           </v-row>

@@ -2,20 +2,21 @@
 @import '@/assets/variables.scss';
 
 
-$navigation-active-color: rgb(16, 56, 64, 0.25);
-$box-shadow-root: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
-$font-family-root: 'Montserrat', sans-serif;
+$fontFamilyRoot: 'Montserrat', sans-serif !important;
 
 $primary: #0D4A56;
-$secondary: #107B88;
-$tertiary: #46A1AA;
-$quanterary: #B4D9DB;
+$secondary: #467b88;
+$tertiary: #c0faff;
+$quanterary: #fb9039;
 $pentanary: #F9F9F4;
-
 
 $primaryFont: #2e384d;
 $secondaryFont: #8d9db1;
 $tertiaryFont: #f8fafa;
+
+$primaryGradient: linear-gradient(150deg, $secondary 0%, $pentanary 100%) !important;
+
+$primaryBoxShadow: rgba(149, 157, 165, 0.2) 0px 8px 24px !important;
 
 
 * {
@@ -26,12 +27,15 @@ $tertiaryFont: #f8fafa;
 html {
     background-color: $pentanary !important;
     box-sizing: border-box;
-    text-rendering: optimizeLegibility;
+    text-rendering: optimizeLegibility; 
+
+    .v-application .v-application--wrap * {
+        font-family: $fontFamilyRoot;
+    }
+
     .v-main {
         // --- MAIN CONFIG --- //
-        font-family: $font-family-root !important;
         background-color: $pentanary !important;
-
         
         // ------- ALL INPUTS CONFIG ------- //
         .theme--light.v-label {
@@ -52,44 +56,61 @@ html {
 
 
         .banner-card {
-            background: linear-gradient(150deg, rgba(180, 217, 219, 1) 0%, rgba(249, 249, 244, 1) 75%) !important;
+            background: $primaryGradient;
             backdrop-filter: blur(7.5px);
-            border-top: 1px solid rgba(180, 217, 219, 0.3);
-            border-left: 1px solid rgba(180, 217, 219, 0.3);
-            .banner-card-text {
-                background-image: linear-gradient(45deg, #2e384d, #8d9db1);
-                background-color: #2e384d;
-                background-size: 100%;
-                background-repeat: repeat;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent; 
-                -moz-background-clip: text;
-                -moz-text-fill-color: transparent;
+            // border-top: 1px solid rgba(180, 217, 219, 0.3);
+            // border-left: 1px solid rgba(180, 217, 219, 0.3);
+            .banner-text {
+                background: rgba(192, 250, 255, 0.5);
+                border-radius: 16px;
+                box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+                backdrop-filter: blur(5px);
+                -webkit-backdrop-filter: blur(5px);
+                border: 1px solid rgba(192, 250, 255, 0.5);
             }
         }
 
         .song-card {
-            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px !important;
+            box-shadow: $primaryBoxShadow;
+            .image-card {
+
+            }
+            // .song-cover::before {
+            //     content: '';
+            //     // position: absolute !important;
+            //     position: absolute;
+            //     width: 100%;
+            //     height: 100%;
+            //     top: 50%;
+            //     background-image: url('/kratos-avatar.jpg');
+            //     background-size: cover !important;
+            //     z-index: 0;
+            //     filter: blur(12px);
+            //     opacity: 0.5 ;
+            //     left: 50%;
+            //     transform: translate(-50%, 10%);
+            // }
             .play-btn {
-                background: linear-gradient(150deg, rgba(180, 217, 219, 1) 0%, rgba(249, 249, 244, 1) 75%) !important;
-                box-shadow: rgba(149, 157, 165, 0.5) 0px 8px 24px !important;
-                backdrop-filter: blur(7.5px);
-                border-top: 1px solid rgba(180, 217, 219, 0.3);
-                border-left: 1px solid rgba(180, 217, 219, 0.3);
+                background: rgba(192, 250, 255, 0.5);
+                border-radius: 16px;
+                box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+                backdrop-filter: blur(5px);
+                -webkit-backdrop-filter: blur(5px);
+                border: 1px solid rgba(192, 250, 255, 0.5);
             }
         }
 
         .opened-song-card {
-            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px !important;
+            box-shadow: $primaryBoxShadow;
             .close-btn::before {
                 opacity: 0;
             }
             .play-pause-btn {
-                background: linear-gradient(150deg, rgba(180, 217, 219, 1) 0%, rgba(249, 249, 244, 1) 75%) !important;
-                box-shadow: rgba(149, 157, 165, 0.5) 0px 8px 24px !important;
-                backdrop-filter: blur(7.5px);
-                border-top: 1px solid rgba(180, 217, 219, 0.3);
-                border-left: 1px solid rgba(180, 217, 219, 0.3);
+                // background: $primaryGradient;
+                // box-shadow: $primaryBoxShadow;
+                // backdrop-filter: blur(7.5px);
+                // border-top: 1px solid rgba(180, 217, 219, 0.3);
+                // border-left: 1px solid rgba(180, 217, 219, 0.3);
             }         
             .volume-slider .v-slider--horizontal .v-slider__track-container {
                 height: 10px !important;
@@ -100,87 +121,46 @@ html {
             }           
         }  
         
-        .login-card {
-            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px !important;
-            .signin-btn{
-                box-shadow: rgba(13, 74, 86, 0.25) 0px 8px 8px !important; 
-                background: linear-gradient(45deg, rgba(16,44,49,1) 0%, rgba(16,123,136,1) 75%);
-            }
-            .signup-btn{
-                box-shadow: rgba(13, 74, 86, 0.25) 0px 8px 8px !important; 
-                background: linear-gradient(45deg, rgba(16,44,49,1) 0%, rgba(16,123,136,1) 75%);
-            }
-        }
-
-
         // --- DIVIDER CONFIG --- //
-        .divider {
-            line-height: 1em;
-            position: relative;
-            outline: 0;
-            border: 0;
-            text-align: center;
-            height: 1.5em;
-            &:before {
-                content: '';
-                background: linear-gradient(to right, transparent, $secondaryFont, transparent) !important;
-                position: absolute;
-                left: 0;
-                top: 50%;
-                width: 100%;
-                height: 1px;
-            }
-            &:after {
-                content: attr(data-content);
-                position: relative;
-                display: inline-block; 
-                color: $secondaryFont !important;
-                font-weight: bold !important;
-                padding: 0 .5em;        
-                line-height: 1.5em;
-                color: $secondaryFont;
-                background-color: white;
-            }
+        // .divider {
+        //     line-height: 1em;
+        //     position: relative;
+        //     outline: 0;
+        //     border: 0;
+        //     text-align: center;
+        //     height: 1.5em;
+        //     &:before {
+        //         content: '';
+        //         background: linear-gradient(to right, transparent, $secondaryFont, transparent) !important;
+        //         position: absolute;
+        //         left: 0;
+        //         top: 50%;
+        //         width: 100%;
+        //         height: 1px;
+        //     }
+        //     &:after {
+        //         content: attr(data-content);
+        //         position: relative;
+        //         display: inline-block; 
+        //         color: $secondaryFont !important;
+        //         font-weight: bold !important;
+        //         padding: 0 .5em;        
+        //         line-height: 1.5em;
+        //         color: $secondaryFont;
+        //         background-color: white;
+        //     }
+        // }         
+        .navigation .navItem.v-item--active.v-list-item--active.v-list-item.v-list-item--link.theme--light {
+            background: $primary !important;
         }
-
-
-        // --- NAV CONFIG --- //
         .navigation .v-list-item--link::before {
-            background: none !important;
+            background: $primaryFont !important;
         }
-        .navigation .navItem.v-list-item {
-            background: none;
-        }
-        .navigation .navItem.v-list-item--active {
-            border-radius: 0px !important;
-            border-left: 3px solid $primaryFont;
-        }
-        .navigation .v-list-item--active .dropdownNavItem {
-            box-shadow: none !important;  
-        }
-        .navigation .v-list-item--hover {
-            background: none;  
-        }
-        .navigation .v-list-item .v-list-item__title {           
-            color: $primaryFont !important; 
-        }
-        .navigation .v-list-item .v-icon {
-            color: $tertiaryFont;
-            box-shadow: rgba(13, 74, 86, 0.25) 0px 8px 8px !important; 
-        }
-        .navigation .v-list-item--active .v-icon, .navigation .v-list-item--active .v-list-item__title { 
-            color: $primaryFont !important; // ACTIVE font color
-            font-weight: 700;
-        }
-        .navigation .v-list-item--active .sectionIcon {           
-            background-color: $primary !important;
-            color: $tertiaryFont !important;
-        }
-
-        // Drop down items
-        .navigation .navDropdownItem.v-list-item .v-icon, .navigation .navDropdownItem.v-list-item .v-list-item__title {
-            font-size: 13px;           
-            color: $secondary !important; 
-        }       
+        .navigation .v-list-item--active .v-icon { 
+            color: $tertiary !important; // ACTIVE icon color
+        }     
+        .navigation .v-list-item--active .v-list-item__title { 
+            color: $tertiaryFont !important; // ACTIVE font color
+        }   
     }
 }

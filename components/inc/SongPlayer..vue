@@ -1,11 +1,9 @@
 <template>
-    <v-row class="mx-n6 mt-n16" mobile-breakpoint="1366">
-        <v-col class="justify-center d-flex" cols="12" transition="slide-x-transition">
-            <v-card class="opened-song-card rounded-xl" ref="audio" max-width="600">
+    <v-row class="mx-n6 mt-n" mobile-breakpoint="1366">
+        <v-col class="justify-center d-flex" cols="12" transition="slide-x-transition">            
+            <v-card class="opened-song-card rounded-xl white" ref="audio" max-width="600">
                 <v-row class="mt-0 justify-end mx-0">
-                    <v-btn class="close-btn primaryFont--text white" 
-                    depressed fab v-on:click="goback"
-                    before="background-color: none !important;">
+                    <v-btn class="close-btn primaryFont--text" text fab @click="goback, $emit('close')">
                         <v-icon>mdi-close</v-icon>
                     </v-btn>
                 </v-row>
@@ -16,7 +14,7 @@
                             <v-row>
                                 <v-col class="text-center">
                                     <v-badge avatar bordered overlap bottom offset-x="25" offset-y="20">                                  
-                                        <template v-slot:badge>
+                                        <template #badge>
                                             <v-avatar>
                                                 <v-img :src="song.albumCover"></v-img>
                                             </v-avatar>
@@ -31,7 +29,7 @@
                                         {{ song.artistName }}
                                     </v-list-item-title>
                                     <v-tooltip right>
-                                        <template v-slot:activator="{ on, attrs }">
+                                        <template #activator="{ on, attrs }">
                                             <v-list-item-subtitle 
                                             class="secondaryFont--text text-center mt-1 font-weight-medium text-wrap" 
                                             max-width="250"
@@ -87,17 +85,17 @@
                                 <v-icon>mdi-repeat</v-icon>
                             </v-btn>
                             <v-btn 
-                            class="primaryFont--text ms-4" rounded small icon @click="previous">
-                                <v-icon>mdi-rewind</v-icon>
+                            class="secondaryFont--text ms-4" rounded small icon @click="previous">
+                                <v-icon>mdi-skip-previous-outline</v-icon>
                             </v-btn>
                             <v-btn 
-                            class="play-pause-btn primaryFont--text ms-6 rounded-lg" 
+                            class="play-pause-btn quanterary--text ms-6 rounded-lg" 
                             x-large icon @click.native="playing ? pause() : play()" :disabled="!loaded">
-                                <v-icon>{{ !playing || paused ? 'mdi-play' : 'mdi-pause' }}</v-icon>
+                                <v-icon>{{ !playing || paused ? 'mdi-play-outline' : 'mdi-pause' }}</v-icon>
                             </v-btn>
                             <v-btn 
-                            class="primaryFont--text ms-6 me-4" rounded small icon @click="next">
-                                <v-icon>mdi-fast-forward</v-icon>
+                            class="secondaryFont--text ms-6 me-4" rounded small icon @click="next">
+                                <v-icon>mdi-skip-next-outline</v-icon>
                             </v-btn>
                             <v-btn 
                             class="secondaryFont--text ms-0 me-auto" rounded small icon>
@@ -134,6 +132,7 @@
 <script>
 const formatTime = second => new Date(second * 1000).toISOString().substr(15, 4)
 export default {
+    name: 'SongPlayer',
     data () {
         return {
             firstPlay: true,
@@ -148,7 +147,7 @@ export default {
             playerVolume: 0.35,
         }
     },
-    name: 'SongPlayer',
+
     props: {
         song: {
             id: Number,
@@ -199,10 +198,12 @@ export default {
     },
 
     methods: {
+        close() {
+            this.$emit('close')
+        },
         goback () {
             this.$emit('goback')
         },
-
         setPosition () {
             this.$refs.audioPlayer.currentTime = parseInt(this.$refs.audioPlayer.duration / 100 * this.percentage)
         },

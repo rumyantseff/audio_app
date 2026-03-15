@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    padding: 0;
+    margin: 0;
+    text-transform: none !important;
+  }
+
+  html,
+  body {
+    @apply bg-pentanary font-sans box-border;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+@layer components {
+  /* Range slider - shared styles for seek and volume */
+  .range-slider {
+    @apply w-full h-1 appearance-none rounded-full cursor-pointer outline-none;
+    background: #8d9db1;
+  }
+
+  .range-slider::-webkit-slider-thumb {
+    @apply appearance-none w-4 h-4 rounded-full cursor-pointer;
+    background: #2e384d;
+    margin-top: -6px;
+  }
+
+  .range-slider::-webkit-slider-runnable-track {
+    @apply h-1 rounded-full;
+  }
+
+  .range-slider::-moz-range-thumb {
+    @apply w-4 h-4 rounded-full cursor-pointer border-0;
+    background: #2e384d;
+  }
+
+  .range-slider::-moz-range-track {
+    @apply h-1 rounded-full;
+    background: #8d9db1;
+  }
+
+  .range-slider:disabled {
+    @apply opacity-40 cursor-not-allowed;
+  }
+
+  /* Volume slider - slightly thicker track */
+  .range-slider--volume {
+    height: 10px;
+  }
+
+  .range-slider--volume::-webkit-slider-thumb {
+    width: 14px;
+    height: 14px;
+    margin-top: -2px;
+  }
+
+  .range-slider--volume::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+  }
+}

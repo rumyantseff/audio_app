@@ -43,7 +43,7 @@
         <div
           v-for="song in list"
           :key="song.id"
-          class="flex-shrink-0 w-[calc((100vw-72px-2rem)/5.5-1.5rem)]"
+          class="flex-shrink-0 w-[calc((100vw-4rem)/1.5-1.5rem)] sm:w-[calc((100vw-4rem)/2.5-1.5rem)] md:w-[calc((100vw-72px-2rem)/5.5-1.5rem)]"
         >
           <SongCard :song="song" @play="playSong(song)" @like="song.likes++" />
         </div>
@@ -55,8 +55,11 @@
 <script setup lang="ts">
 import type { Song } from '~/types/song'
 
-const { getAll } = useSongs()
-const list = ref<Song[]>(getAll())
+const { getAll } = useSupabaseSongs()
+const list = ref<Song[]>([])
+onMounted(async () => {
+  list.value = await getAll()
+})
 
 const track = ref<HTMLElement | null>(null)
 const canScrollLeft = ref(false)

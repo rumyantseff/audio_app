@@ -17,7 +17,7 @@
         <h1 class="text-font-primary dark:text-white text-3xl md:text-5xl font-bold">{{ album.name }}</h1>
         <div
           class="flex items-center gap-2 cursor-pointer group w-fit"
-          @click="navigateTo(`/artist/${album.artistId}`)"
+          @click="navigateTo(`/artist/${album.artist_id}`)"
         >
           <div v-if="artist" class="w-7 h-7 rounded-full overflow-hidden">
             <img :src="artist.avatar" :alt="artist.name" class="w-full h-full object-cover" />
@@ -58,9 +58,18 @@
 import { formatNumber } from '~/composables/useFormatNumber'
 
 const route = useRoute()
-const { getAlbum, getSongsByAlbum, getArtist } = useSongs()
+const { getAlbum, getSongsByAlbum, getArtist } = useSupabaseSongs()
 
-const album = computed(() => getAlbum(Number(route.params.id)))
-const tracks = computed(() => getSongsByAlbum(Number(route.params.id)))
-const artist = computed(() => album.value ? getArtist(album.value.artistId) : null)
+const album = ref()
+const tracks = ref([])
+const artist = ref()
+
+onMounted(async () => {
+  const id = Number(route.params.id)
+  album.value = await getAlbum(id)
+  ;[tracks.value, artist.value] = await Promise.all([
+    getSongsByAlbum(id),
+    album.value ? getArtist(album.value.artist_id) : Promise.resolve(null),
+  ])
+})
 </script>

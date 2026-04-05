@@ -70,9 +70,18 @@
 import { formatNumber } from '~/composables/useFormatNumber'
 
 const route = useRoute()
-const { getArtist, getSongsByArtist, getAlbumsByArtist } = useSongs()
+const { getArtist, getSongsByArtist, getAlbumsByArtist } = useSupabaseSongs()
 
-const artist = computed(() => getArtist(Number(route.params.id)))
-const topTracks = computed(() => getSongsByArtist(Number(route.params.id)).sort((a, b) => b.hears - a.hears))
-const artistAlbums = computed(() => getAlbumsByArtist(Number(route.params.id)))
+const artist = ref()
+const topTracks = ref([])
+const artistAlbums = ref([])
+
+onMounted(async () => {
+  const id = Number(route.params.id)
+  ;[artist.value, topTracks.value, artistAlbums.value] = await Promise.all([
+    getArtist(id),
+    getSongsByArtist(id),
+    getAlbumsByArtist(id),
+  ])
+})
 </script>

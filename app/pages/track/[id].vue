@@ -6,7 +6,7 @@
         <!-- Hero background blur -->
         <div
           class="absolute inset-0 z-0 opacity-40 dark:opacity-25 pointer-events-none"
-          :style="`background: url('/${song.albumCover}') center/cover no-repeat; filter: blur(60px) saturate(2);`"
+          :style="`background: url('${song.albumCover}') center/cover no-repeat; filter: blur(60px) saturate(2);`"
         />
 
         <!-- Back button -->
@@ -22,7 +22,7 @@
         <!-- Cover art -->
         <div class="flex-shrink-0 mx-auto md:mx-0">
           <div class="w-60 h-60 rounded-3xl overflow-hidden shadow-2xl">
-            <img :src="`/${song.albumCover}`" :alt="song.albumName" class="w-full h-full object-cover" />
+            <img :src="song.albumCover" :alt="song.albumName" class="w-full h-full object-cover" />
           </div>
         </div>
 
@@ -153,6 +153,15 @@
       </div>
   </div>
 
+  <!-- More albums -->
+  <div v-if="song" class="w-full px-8">
+    <TrackAlbums
+      :artist-id="song.artistId"
+      :artist-name="song.artistName"
+      :current-album-id="song.albumId"
+    />
+  </div>
+
   <!-- 404 -->
   <div v-else class="min-h-screen flex items-center justify-center">
     <div class="text-center">
@@ -169,13 +178,18 @@
 import { formatNumber } from '~/composables/useFormatNumber'
 
 const route = useRoute()
-const { getSong, getNext, getPrevious } = useSongs()
+const { getSong, getNext, getPrevious } = useSupabaseSongs()
 
 const id = Number(route.params.id)
-const song = ref(getSong(id))
+const song = ref()
 const liked = ref(false)
 
-useHead({ title: song.value ? `${song.value.songName} – ${song.value.artistName}` : 'Track' })
+onMounted(async () => {
+  song.value = await getSong(id)
+  if (song.value) {
+    useHead({ title: `${song.value.songName} – ${song.value.artistName}` })
+  }
+})
 
 // Audio state
 const audioEl = ref<HTMLAudioElement | null>(null)
@@ -222,7 +236,8 @@ function mute() {
   el.muted = isMuted.value
 }
 
-function onVolumeChange(val: number) {
+function onVolumeChange(val: number | string) {
+  val = Number(val)
   playerVolume.value = val
   if (val > 0 && isMuted.value) {
     isMuted.value = false
@@ -254,15 +269,15 @@ function toggleLike() {
   song.value.likes += liked.value ? 1 : -1
 }
 
-function goToNext() {
+async function goToNext() {
   if (!song.value) return
-  const next = getNext(song.value.id)
+  const next = await getNext(song.value.id)
   if (next) navigateTo(`/track/${next.id}`)
 }
 
-function goToPrevious() {
+async function goToPrevious() {
   if (!song.value) return
-  const prev = getPrevious(song.value.id)
+  const prev = await getPrevious(song.value.id)
   if (prev) navigateTo(`/track/${prev.id}`)
 }
 

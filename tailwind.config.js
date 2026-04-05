@@ -21,6 +21,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Montserrat', 'sans-serif'],
+        montserrat: ['Montserrat', 'sans-serif'],
       },
       boxShadow: {
         app: 'rgba(149, 157, 165, 0.2) 0px 8px 24px',

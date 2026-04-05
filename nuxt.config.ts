@@ -1,7 +1,15 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
-  modules: ['@nuxtjs/tailwindcss'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/supabase'],
+
+  supabase: {
+    redirectOptions: {
+      login: '/',
+      callback: '/',
+      exclude: ['/*'],
+    },
+  },
 
   css: [
     '@mdi/font/css/materialdesignicons.min.css',
@@ -33,6 +41,10 @@ export default defineNuxtConfig({
     { path: '~/components/app/ui', pathPrefix: false },
     { path: '~/components/section/songs', pathPrefix: false },
     { path: '~/components/section/player', pathPrefix: false },
+    { path: '~/components/section/banner', pathPrefix: false },
+    { path: '~/components/section/track', pathPrefix: false },
+    { path: '~/components/section/radio', pathPrefix: false },
+    { path: '~/components/section/popular', pathPrefix: false },
   ],
 
   future: { compatibilityVersion: 4 },

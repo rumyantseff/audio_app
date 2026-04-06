@@ -1,12 +1,13 @@
 <template>
-  <div class="hidden lg:block relative shrink-0" style="width: 320px; height: 160px;">
+  <div class="hidden lg:flex items-end relative shrink-0" style="width: 380px; height: 220px; perspective: 1000px;">
     <BannerCoverItem
-      v-for="(song, i) in [...songs].reverse()"
+      v-for="(song, i) in songs"
       :key="song.id"
       :src="song.album_cover"
-      :index="songs.length - 1 - i"
+      :index="i"
       :total="songs.length"
       :song-id="song.id"
+      :delay="i * 280"
     />
   </div>
 </template>
@@ -19,8 +20,8 @@ onMounted(async () => {
   const { data } = await client
     .from('songs')
     .select('id, album_cover')
-    .order('id', { ascending: false })
-    .limit(10)
-  songs.value = data ?? []
+    .order('date', { ascending: false })
+    .limit(5)
+  songs.value = (data ?? []).reverse()
 })
 </script>

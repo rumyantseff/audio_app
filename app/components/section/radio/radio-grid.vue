@@ -2,8 +2,8 @@
   <div class="mt-10">
     <div class="mb-4 flex items-center justify-between">
       <h2 class="text-font-primary dark:text-gray-100 font-bold text-xl">Popular Radio Stations</h2>
-      <button type="button" class="text-secondary text-sm font-medium hover:text-primary transition-colors">
-        See all <i class="mdi mdi-arrow-right" />
+      <button type="button" class="text-secondary dark:text-tertiary text-xs font-medium border border-secondary/40 dark:border-tertiary/30 rounded px-3 py-1 hover:border-secondary dark:hover:border-tertiary transition-colors">
+        See all
       </button>
     </div>
 
@@ -30,7 +30,7 @@
         @click="scrollRight"
       />
 
-      <div ref="track" class="flex overflow-x-scroll scroll-smooth gap-6 pb-4 scrollbar-hide" @scroll="onScroll">
+      <div ref="track" class="flex overflow-x-scroll scroll-smooth pt-4 -mt-4 pb-6 gap-6 scrollbar-hide" @scroll="onScroll">
         <div v-for="station in stations" :key="station.id" class="flex-shrink-0" style="width: 160px">
           <RadioCard :station="station" />
         </div>

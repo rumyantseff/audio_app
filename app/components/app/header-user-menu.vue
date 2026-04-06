@@ -1,16 +1,23 @@
 <template>
   <div class="relative" ref="menuRoot">
-    <button type="button" class="relative -mr-4 focus:outline-none" @click="open = !open">
-      <img src="/avatar.jpg" alt="User avatar" class="w-11 h-11 rounded-full object-cover bg-primary border-2 border-primary" />
-      <span class="absolute bottom-0.5 right-1 w-2.5 h-2.5 rounded-full bg-green-500 border-2 border-pentanary" />
-    </button>
 
+    <!-- Toggle + Avatar joined block -->
+    <div class="flex items-stretch rounded-lg overflow-hidden shadow-app">
+      <!-- Theme toggle (left, square-ish) -->
+      <ThemeToggle class="rounded-none" />
+
+      <!-- Avatar button (right) -->
+      <button type="button" class="relative focus:outline-none" @click="open = !open">
+        <img src="/avatar.jpg" alt="User avatar" class="w-10 h-12 object-cover" />
+      </button>
+    </div>
+
+    <!-- Dropdown -->
     <Transition name="menu-slide">
-      <div v-if="open" class="absolute right-0 top-14 w-56 bg-white dark:bg-gray-800 rounded-2xl shadow-app z-50 overflow-hidden">
+      <div v-if="open" class="absolute right-0 top-16 w-56 bg-white dark:bg-gray-800 rounded-2xl shadow-app z-50 overflow-hidden">
         <div class="flex items-center gap-3 px-4 py-4">
           <div class="relative shrink-0">
-            <img src="/avatar.jpg" alt="User avatar" class="w-11 h-11 rounded-full object-cover bg-primary" />
-            <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-green-500 border-2 border-white dark:border-gray-800" />
+            <img src="/avatar.jpg" alt="User avatar" class="w-11 h-11 rounded-lg object-cover bg-primary" />
           </div>
           <span class="text-font-primary dark:text-gray-100 text-sm font-semibold">Vladislav Rumyantsev</span>
         </div>

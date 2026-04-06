@@ -28,7 +28,7 @@
         @click="scrollRight"
       />
 
-      <div ref="track" class="flex overflow-x-auto scroll-smooth gap-4 pb-2 scrollbar-hide" @scroll="onScroll">
+      <div ref="track" class="flex overflow-x-auto scroll-smooth pt-3 -mt-3 pb-6 gap-4 scrollbar-hide" @scroll="onScroll">
         <div
           v-for="(col, ci) in columns"
           :key="ci"
@@ -40,7 +40,7 @@
     </div>
 
     <!-- Desktop: 2-column grid -->
-    <div class="hidden md:grid grid-cols-2 gap-y-2 gap-x-4">
+    <div class="hidden md:grid grid-cols-2 gap-y-2 gap-x-4 pt-3 -mt-3 pb-6">
       <PopularTrackItem
         v-for="song in songs"
         :key="song.id"

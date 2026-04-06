@@ -2,8 +2,8 @@
   <div class="mt-8">
     <div class="mb-4 flex items-center justify-between">
       <h2 class="text-font-primary dark:text-gray-100 font-bold text-xl">New Releases</h2>
-      <button type="button" class="text-secondary text-sm font-medium hover:text-primary transition-colors">
-        See all <i class="mdi mdi-arrow-right" />
+      <button type="button" class="text-secondary dark:text-tertiary text-xs font-medium border border-secondary/40 dark:border-tertiary/30 rounded px-3 py-1 hover:border-secondary dark:hover:border-tertiary transition-colors">
+        See all
       </button>
     </div>
 
@@ -37,7 +37,7 @@
       <!-- Carousel track -->
       <div
         ref="track"
-        class="flex overflow-x-auto scroll-smooth pb-10 gap-6 scrollbar-hide"
+        class="flex overflow-x-auto scroll-smooth pt-4 -mt-4 pb-10 gap-6 scrollbar-hide"
         @scroll="onScroll"
       >
         <div

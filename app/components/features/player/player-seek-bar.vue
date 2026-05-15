@@ -1,6 +1,6 @@
 <template>
   <div class="px-4 mt-2">
-    <RangeSlider :model-value="percentage" :disabled="!loaded" @change="emit('seek', $event)" />
+    <UiRangeSlider :model-value="percentage" :disabled="!loaded" @change="emit('seek', $event)" />
     <div class="flex items-center mt-1">
       <span class="text-font-primary text-xs font-medium px-1">{{ currentTime }}</span>
       <div class="flex-1" />

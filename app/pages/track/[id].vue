@@ -137,7 +137,7 @@
                 >
                   {{ isMuted ? 0 : Math.ceil(playerVolume * 100) }}%
                 </div>
-                <RangeSlider
+                <UiRangeSlider
                   :model-value="isMuted ? 0 : playerVolume"
                   :min="0"
                   :max="1"

@@ -24,11 +24,13 @@ export default defineNuxtConfig({
       'track/[id]': { en: '/track/[id]', sk: '/track/[id]' },
       'artist/[id]': { en: '/artist/[id]', sk: '/artist/[id]' },
       'album/[id]': { en: '/album/[id]', sk: '/album/[id]' },
+      'genres/[slug]': { en: '/genres/[slug]', sk: '/genres/[slug]' },
     },
   },
 
   css: [
     '@mdi/font/css/materialdesignicons.min.css',
+    '~/assets/css/nav-active.css',
   ],
 
   app: {
@@ -54,11 +56,11 @@ export default defineNuxtConfig({
   components: [
     { path: '~/components/ui', pathPrefix: false },
     { path: '~/components/app', pathPrefix: false },
-    { path: '~/components/app/ui', pathPrefix: false },
     { path: '~/components/app/icons', pathPrefix: false },
     { path: '~/components/app/header', pathPrefix: false },
     { path: '~/components/app/header/user-menu', pathPrefix: false },
     { path: '~/components/app/navigation', pathPrefix: false },
+    { path: '~/components/app/footer', pathPrefix: false },
     { path: '~/components/features', pathPrefix: false },
     { path: '~/components/features/home', pathPrefix: false },
     { path: '~/components/features/songs', pathPrefix: false },

@@ -1,0 +1,40 @@
+/* Shared active-state glass background for nav items and sub-items. */
+
+/* ── Light mode: warm amber tint, dark text ── */
+.navActive {
+  color: #0D4A56 !important;
+  font-weight: 600 !important;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(251, 144, 57, 0.30) 0%,
+      rgba(251, 144, 57, 0.15) 50%,
+      rgba(251, 144, 57, 0.04) 100%
+    );
+  border: 1px solid rgba(251, 144, 57, 0.4);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    0 4px 14px    rgba(251, 144, 57, 0.2),
+    0 1px 3px     rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.navActive i { opacity: 1 !important; color: #0D4A56 !important; }
+
+/* ── Dark mode: warm amber tint, white text ── */
+.dark .navActive {
+  color: #ffffff !important;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(251, 144, 57, 0.30) 0%,
+      rgba(251, 144, 57, 0.15) 50%,
+      rgba(251, 144, 57, 0.04) 100%
+    );
+  border: 1px solid rgba(251, 144, 57, 0.45);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 4px 14px    rgba(251, 144, 57, 0.25),
+    0 1px 3px     rgba(0, 0, 0, 0.3);
+}
+.dark .navActive i { color: #ffffff !important; }

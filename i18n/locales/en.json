@@ -1,0 +1,28 @@
+{
+  "nav": {
+    "home": "Home",
+    "styles": "Styles"
+  },
+  "banner": {
+    "label": "New Release",
+    "cta": "Start listening"
+  },
+  "sections": {
+    "newReleases": "New Releases",
+    "seeAll": "See all",
+    "popularRadio": "Popular Radio Stations",
+    "mostPopular": "Most Popular"
+  },
+  "player": {
+    "play": "Play",
+    "pause": "Pause",
+    "next": "Next",
+    "previous": "Previous",
+    "volume": "Volume",
+    "likes": "Likes",
+    "hears": "Plays"
+  },
+  "track": {
+    "moreBy": "More by"
+  }
+}

@@ -9,10 +9,8 @@
   >
     <!-- Sliding circle with icon -->
     <span
-      :class="[
-        'absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded shadow-md transition-all duration-500 flex items-center justify-center',
-        isDark ? 'top-[calc(100%-2rem)] bg-white' : 'top-1 bg-white',
-      ]"
+      class="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded shadow-md bg-white flex items-center justify-center transition-all duration-500 ease-out"
+      :style="{ top: isDark ? 'calc(100% - 1.25rem)' : '0.25rem' }"
     >
       <i
         :class="[

@@ -1,0 +1,28 @@
+{
+  "nav": {
+    "home": "Domov",
+    "styles": "Štýly"
+  },
+  "banner": {
+    "label": "Nová nahrávka",
+    "cta": "Začať počúvať"
+  },
+  "sections": {
+    "newReleases": "Nové vydania",
+    "seeAll": "Zobraziť všetko",
+    "popularRadio": "Populárne rádiá",
+    "mostPopular": "Najpopulárnejšie"
+  },
+  "player": {
+    "play": "Prehrať",
+    "pause": "Pozastaviť",
+    "next": "Ďalší",
+    "previous": "Predchádzajúci",
+    "volume": "Hlasitosť",
+    "likes": "Páči sa",
+    "hears": "Prehratí"
+  },
+  "track": {
+    "moreBy": "Viac od"
+  }
+}

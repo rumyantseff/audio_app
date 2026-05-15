@@ -1,32 +1,9 @@
 import type { Song } from '~/types/song'
+import type { Artist } from '~/types/artist'
+import type { Album } from '~/types/album'
+import type { RadioStation } from '~/types/radio'
 
-export interface Artist {
-  id: number
-  name: string
-  avatar: string
-  cover: string
-  listeners: number
-  bio: string
-  verified: boolean
-}
-
-export interface Album {
-  id: number
-  artist_id: number
-  name: string
-  cover: string
-  year: string
-  tracks: number
-  duration: string
-}
-
-export interface RadioStation {
-  id: number
-  name: string
-  genre: string
-  cover: string
-  listeners: number
-}
+export type { Artist, Album, RadioStation }
 
 function mapSong(row: any): Song {
   return {

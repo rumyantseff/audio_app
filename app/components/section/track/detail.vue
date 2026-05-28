@@ -1,43 +1,41 @@
 <template>
-  <div class="relative rounded-2xl overflow-hidden px-8 pt-16 pb-8 flex flex-col md:flex-row gap-10 items-start">
-    <SectionTrackDetailHeroBg :image="song.albumCover" />
+  <div class="relative rounded-2xl overflow-hidden px-8 pt-16 pb-8 min-h-[calc(100vh-9rem)] flex flex-col">
+    <SectionTrackDetailHeroBg :image="song.artistAvatar" />
 
     <SharedBackButton to="/" class="absolute top-6 left-8 z-10" />
 
-    <SectionTrackDetailCover :src="song.albumCover" :alt="song.albumName" />
+    <!-- Upper row: cover + info -->
+    <div class="relative z-10 flex flex-col md:flex-row gap-10 items-start mb-8">
+      <SectionTrackDetailCover :src="song.albumCover" :alt="song.albumName" />
 
-    <SectionTrackDetailInfoPanel>
-      <SectionTrackHeroInfo :song="song" />
-      <SectionTrackStats :song="song" />
+      <SectionTrackDetailInfoPanel>
+        <SectionTrackHeroInfo :song="song" />
+        <SectionTrackStats :song="song" />
+      </SectionTrackDetailInfoPanel>
+    </div>
 
-      <audio ref="audioEl" :src="`/${song.songSrc}`" preload="auto" />
+    <!-- Tracklist: other songs from same album -->
+    <div class="relative z-10 mb-8">
+      <SectionTrackDetailTracklist :songs="albumTracks" :current-song-id="song.id" />
+    </div>
 
-      <SectionTrackWaveform
+    <!-- Lower row: prev | play | next spread across width + waveform below -->
+    <div class="relative z-10 mt-auto">
+      <SectionTrackDetailPlayerBar
+        :playing="playing"
+        :loaded="loaded"
         :bars="bars"
         :percentage="percentage"
         :current-time="currentTime"
         :duration="duration"
+        @toggle-play="togglePlay"
+        @previous="goToPrevious"
+        @next="goToNext"
         @seek="seekToPercent"
       />
+    </div>
 
-      <div class="grid grid-cols-2 items-center mt-4 mb-6">
-        <SectionTrackControls
-          :playing="playing"
-          :loaded="loaded"
-          @toggle-play="togglePlay"
-          @repeat="restart"
-          @previous="goToPrevious"
-          @next="goToNext"
-        />
-        <SectionTrackVolume
-          :volume="playerVolume"
-          :muted="isMuted"
-          :icon="volumeIcon"
-          @toggle-mute="mute"
-          @change="setVolume"
-        />
-      </div>
-    </SectionTrackDetailInfoPanel>
+    <audio ref="audioEl" :src="`/${song.songSrc}`" preload="auto" />
   </div>
 </template>
 
@@ -46,11 +44,11 @@ import type { Song } from '~/types/song'
 
 const props = defineProps<{ song: Song }>()
 
-const { getNext, getPrevious } = useSupabaseSongs()
+const { getNext, getPrevious, getSongsByAlbum } = useSupabaseSongs()
 const {
-  audioEl, loaded, playing, isMuted, percentage,
-  currentTime, duration, playerVolume, volumeIcon,
-  togglePlay, mute, setVolume, restart, seekToPercent, attach, detach,
+  audioEl, loaded, playing, percentage,
+  currentTime, duration,
+  togglePlay, seekToPercent, attach, detach,
 } = useAudioPlayer()
 
 // Waveform bars — seeded pseudo-random for consistency per track
@@ -62,6 +60,14 @@ const bars = computed(() => {
     return Math.round(20 + r * 70)
   })
 })
+
+const albumTracks = ref<Song[]>([])
+
+async function loadAlbumTracks() {
+  albumTracks.value = await getSongsByAlbum(props.song.albumId)
+}
+
+watch(() => props.song.albumId, loadAlbumTracks, { immediate: true })
 
 async function goToNext() {
   const next = await getNext(props.song.id)

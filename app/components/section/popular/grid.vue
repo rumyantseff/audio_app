@@ -8,7 +8,7 @@
           :key="ci"
           class="flex-shrink-0 w-[calc(100vw-5rem)] flex flex-col gap-2"
         >
-          <FeaturesPopularTrackItem v-for="song in col" :key="song.id" :song="song" />
+          <SectionPopularTrackItem v-for="song in col" :key="song.id" :song="song" />
         </div>
       </UiCarouselSection>
     </div>
@@ -17,7 +17,7 @@
     <div class="hidden md:block">
       <UiSectionHeader title="Most Popular" />
       <div class="grid grid-cols-2 gap-y-2 gap-x-4 pt-3 -mt-3 pb-6">
-        <FeaturesPopularTrackItem v-for="song in songs" :key="song.id" :song="song" />
+        <SectionPopularTrackItem v-for="song in songs" :key="song.id" :song="song" />
       </div>
     </div>
   </div>

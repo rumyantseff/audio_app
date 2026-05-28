@@ -1,6 +1,6 @@
 <template>
   <div class="hidden lg:flex items-end relative shrink-0" style="width: 380px; height: 220px; perspective: 1000px;">
-    <FeaturesBannerCoverItem
+    <SectionBannerCoverItem
       v-for="(song, i) in songs"
       :key="song.id"
       :src="song.album_cover"

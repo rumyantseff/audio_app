@@ -1,10 +1,10 @@
 <template>
   <template v-if="song">
     <div class="w-full px-8 py-6">
-      <FeaturesTrackDetail :song="song" />
+      <SectionTrackDetail :song="song" />
     </div>
     <div class="w-full px-8">
-      <FeaturesTrackAlbums
+      <SectionTrackAlbums
         :artist-id="song.artistId"
         :artist-name="song.artistName"
         :current-album-id="song.albumId"
@@ -12,7 +12,7 @@
     </div>
   </template>
 
-  <FeaturesTrackNotFound v-else />
+  <SectionTrackNotFound v-else />
 </template>
 
 <script setup lang="ts">

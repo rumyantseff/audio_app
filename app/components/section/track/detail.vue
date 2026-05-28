@@ -17,12 +17,12 @@
 
     <!-- Info + player -->
     <div class="flex-1 min-w-0">
-      <FeaturesTrackHeroInfo :song="song" />
-      <FeaturesTrackStats :song="song" />
+      <SectionTrackHeroInfo :song="song" />
+      <SectionTrackStats :song="song" />
 
       <audio ref="audioEl" :src="`/${song.songSrc}`" preload="auto" />
 
-      <FeaturesTrackWaveform
+      <SectionTrackWaveform
         :bars="bars"
         :percentage="percentage"
         :current-time="currentTime"
@@ -31,7 +31,7 @@
       />
 
       <div class="grid grid-cols-2 items-center mt-4 mb-6">
-        <FeaturesTrackControls
+        <SectionTrackControls
           :playing="playing"
           :loaded="loaded"
           @toggle-play="togglePlay"
@@ -39,7 +39,7 @@
           @previous="goToPrevious"
           @next="goToNext"
         />
-        <FeaturesTrackVolume
+        <SectionTrackVolume
           :volume="playerVolume"
           :muted="isMuted"
           :icon="volumeIcon"

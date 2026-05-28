@@ -1,5 +1,5 @@
 <template>
-  <FeaturesHomePage />
+  <SectionHomePage />
 </template>
 
 <script setup lang="ts">

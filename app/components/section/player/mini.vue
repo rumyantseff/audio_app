@@ -10,12 +10,12 @@
 
       <audio :src="song.songSrc" preload="auto" autoplay ref="audioEl" />
 
-      <FeaturesPlayerArtwork :song="song" />
-      <FeaturesPlayerInfo :song="song" />
-      <FeaturesPlayerStats :song="song" @like="song.likes++" />
-      <FeaturesPlayerSeekBar :percentage="percentage" :current-time="currentTime" :duration="duration" :loaded="loaded" @seek="setPosition" />
-      <FeaturesPlayerControls :playing="playing" :paused="paused" :loaded="loaded" @toggle-play="playing ? pause() : play()" @repeat="repeat" @next="emit('next')" @previous="emit('previous')" />
-      <FeaturesPlayerVolume :player-volume="playerVolume" :is-muted="isMuted" :loaded="loaded" @toggle-mute="mute" @volume-change="playerVolume = $event" />
+      <SectionPlayerArtwork :song="song" />
+      <SectionPlayerInfo :song="song" />
+      <SectionPlayerStats :song="song" @like="song.likes++" />
+      <SectionPlayerSeekBar :percentage="percentage" :current-time="currentTime" :duration="duration" :loaded="loaded" @seek="setPosition" />
+      <SectionPlayerControls :playing="playing" :paused="paused" :loaded="loaded" @toggle-play="playing ? pause() : play()" @repeat="repeat" @next="emit('next')" @previous="emit('previous')" />
+      <SectionPlayerVolume :player-volume="playerVolume" :is-muted="isMuted" :loaded="loaded" @toggle-mute="mute" @volume-change="playerVolume = $event" />
 
       <div class="pb-6" />
     </div>

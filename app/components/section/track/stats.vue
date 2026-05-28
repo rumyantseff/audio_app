@@ -4,7 +4,7 @@
       <i class="mdi mdi-headphones text-base" />
       <span>{{ formatNumber(song.hears) }}</span>
     </div>
-    <SharedLikeButton :count="song.likes" :model-value="liked" @update:model-value="toggleLike" />
+    <SectionTrackStatsLikeButton :count="song.likes" :model-value="liked" @update:model-value="toggleLike" />
   </div>
 </template>
 

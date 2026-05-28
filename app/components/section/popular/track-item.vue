@@ -7,7 +7,7 @@
 
     <div class="flex-1 min-w-0">
       <p class="text-font-primary dark:text-gray-100 text-sm font-semibold truncate leading-tight">{{ song.songName }}</p>
-      <SharedMetadataRow :artist="song.artistName" :album="song.albumName" class="mt-0.5" />
+      <SectionPopularTrackItemMetadataRow :artist="song.artistName" :album="song.albumName" class="mt-0.5" />
     </div>
 
     <SharedStats icon="mdi-headphones" :value="song.hears" class="flex-shrink-0 text-font-secondary dark:text-gray-500 text-xs" />

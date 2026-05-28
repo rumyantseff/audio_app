@@ -6,24 +6,14 @@
     >
       <SectionHeaderUserMenuProfile />
 
-      <hr class="border-t border-font-secondary/20 dark:border-white/10" />
+      <SectionHeaderUserMenuDropdownMenuDivider />
 
-      <NuxtLink
-        to="/profile"
-        class="flex items-center gap-3 px-4 py-3 text-font-primary dark:text-gray-300 text-sm font-medium hover:bg-pentanary dark:hover:bg-white/5 transition-colors"
-        @click="emit('close')"
-      >
-        <i class="mdi mdi-account-cog-outline text-lg" />
+      <SectionHeaderUserMenuDropdownMenuItem to="/profile" icon="mdi-account-cog-outline" @click="emit('close')">
         Profile
-      </NuxtLink>
-      <NuxtLink
-        to="/logout"
-        class="flex items-center gap-3 px-4 py-3 text-font-primary dark:text-gray-300 text-sm font-medium hover:bg-pentanary dark:hover:bg-white/5 transition-colors"
-        @click="emit('close')"
-      >
-        <i class="mdi mdi-logout-variant text-lg" />
+      </SectionHeaderUserMenuDropdownMenuItem>
+      <SectionHeaderUserMenuDropdownMenuItem to="/logout" icon="mdi-logout-variant" @click="emit('close')">
         Logout
-      </NuxtLink>
+      </SectionHeaderUserMenuDropdownMenuItem>
     </div>
   </Transition>
 </template>

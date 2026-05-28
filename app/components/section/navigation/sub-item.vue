@@ -4,7 +4,7 @@
     <span class="absolute left-0 top-1/2 w-3 h-px bg-font-secondary/30 dark:bg-white/15" />
 
     <!-- Pill -->
-    <AppNavigationPill :show="isActive && !hidePill" />
+    <SectionNavigationPill :show="isActive && !hidePill" />
 
     <NuxtLink
       :to="to"

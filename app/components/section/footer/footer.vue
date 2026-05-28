@@ -1,7 +1,7 @@
 <template>
   <footer class="mt-16 py-8 rounded-xl bg-pentanary">
-    <AppFooterLinks />
-    <AppFooterSocials />
+    <SectionFooterLinks />
+    <SectionFooterSocials />
     <hr class="border-t border-font-secondary/30 my-4 mx-auto max-w-sm" />
     <p class="text-center text-font-secondary text-sm">
       Copyright &copy; {{ year }} created by

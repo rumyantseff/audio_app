@@ -4,6 +4,6 @@
     <SectionSongsGrid class="mt-0" />
     <SectionRadioGrid />
     <SectionPopularGrid />
-    <AppFooter />
+    <SectionFooter />
   </div>
 </template>

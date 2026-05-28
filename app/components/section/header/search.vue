@@ -11,7 +11,7 @@
     >
       <i class="mdi mdi-arrow-left text-xl" />
     </button>
-    <AppHeaderSearchInput v-model="query" auto-focus @close="close" />
+    <SectionHeaderSearchInput v-model="query" auto-focus @close="close" />
   </div>
 
   <template v-else>
@@ -32,7 +32,7 @@
         >
           <i class="mdi mdi-magnify text-xl" />
         </button>
-        <AppHeaderSearchInput v-if="isOpen" v-model="query" :auto-focus="true" @close="close" />
+        <SectionHeaderSearchInput v-if="isOpen" v-model="query" :auto-focus="true" @close="close" />
       </div>
     </div>
 

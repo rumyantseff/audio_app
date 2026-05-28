@@ -1,7 +1,7 @@
 <template>
   <div ref="menuRoot" class="relative">
-    <AppHeaderUserMenuTrigger @toggle="open = !open" />
-    <AppHeaderUserMenuDropdown :show="open" @close="open = false" />
+    <SectionHeaderUserMenuTrigger @toggle="open = !open" />
+    <SectionHeaderUserMenuDropdown :show="open" @close="open = false" />
   </div>
 </template>
 

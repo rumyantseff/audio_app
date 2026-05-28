@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-pentanary dark:bg-gray-950 font-sans transition-colors duration-300">
-    <AppHeader />
-    <AppNavigation />
+    <SectionHeader />
+    <SectionNavigation />
     <main class="pt-24">
       <slot />
     </main>

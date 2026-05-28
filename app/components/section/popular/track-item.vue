@@ -5,10 +5,7 @@
   >
     <SharedTrackThumbnail :src="song.albumCover" :alt="song.songName" with-play @play="navigateTo(`/track/${song.id}`)" />
 
-    <div class="flex-1 min-w-0">
-      <p class="text-font-primary dark:text-gray-100 text-sm font-semibold truncate leading-tight">{{ song.songName }}</p>
-      <SectionPopularTrackItemMetadataRow :artist="song.artistName" :album="song.albumName" class="mt-0.5" />
-    </div>
+    <SectionPopularTrackItemInfo :song="song" />
 
     <SharedStats icon="mdi-headphones" :value="song.hears" class="flex-shrink-0 text-font-secondary dark:text-gray-500 text-xs" />
   </div>

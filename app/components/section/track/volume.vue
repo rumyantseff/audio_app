@@ -17,7 +17,7 @@
       >
         {{ muted ? 0 : Math.ceil(volume * 100) }}%
       </div>
-      <UiRangeSlider
+      <SharedRangeSlider
         :model-value="muted ? 0 : volume"
         :min="0"
         :max="1"

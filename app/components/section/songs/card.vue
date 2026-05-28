@@ -1,21 +1,21 @@
 <template>
-  <UiCard aspect="16/10" @click="emit('play')" @middle-click="openInNewTab">
+  <SharedCard aspect="16/10" @click="emit('play')" @middle-click="openInNewTab">
     <img
       :src="song.albumCover"
       :alt="song.songName"
       class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
     />
 
-    <UiBadge class="absolute top-4 right-4">
+    <SharedBadge class="absolute top-4 right-4">
       <i class="mdi mdi-fire text-quanterary text-sm" />
       <span>{{ formattedDate }}</span>
-    </UiBadge>
+    </SharedBadge>
 
     <div class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/85 via-black/40 to-transparent pointer-events-none" />
 
     <div class="absolute inset-x-0 bottom-0 p-5 flex items-end gap-4">
       <div class="flex-1 min-w-0">
-        <UiOverlayHeading :text="song.songName" />
+        <SharedOverlayHeading :text="song.songName" />
         <p
           class="text-white/80 text-sm truncate mt-1 hover:text-tertiary transition-colors"
           @click.stop="navigateTo(`/artist/${song.artistId}`)"
@@ -24,8 +24,8 @@
         </p>
 
         <div class="flex items-center gap-4 mt-3 text-white/90 text-xs font-medium">
-          <UiStats icon="mdi-headphones" :value="song.hears" />
-          <UiStats icon="mdi-heart" :value="song.likes" clickable @click="emit('like')" />
+          <SharedStats icon="mdi-headphones" :value="song.hears" />
+          <SharedStats icon="mdi-heart" :value="song.likes" clickable @click="emit('like')" />
         </div>
       </div>
 
@@ -37,8 +37,8 @@
       </div>
     </div>
 
-    <UiPlayButton @play="emit('play')" />
-  </UiCard>
+    <SharedPlayButton @play="emit('play')" />
+  </SharedCard>
 </template>
 
 <script setup lang="ts">

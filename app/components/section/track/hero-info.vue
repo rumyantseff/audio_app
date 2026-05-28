@@ -7,7 +7,7 @@
       {{ song.songName }}
     </h1>
     <div class="flex items-center gap-3 mt-3">
-      <UiArtistMeta :artist-id="song.artistId" :name="song.artistName" :avatar="song.artistAvatar" />
+      <SharedArtistMeta :artist-id="song.artistId" :name="song.artistName" :avatar="song.artistAvatar" />
       <span class="text-font-secondary/40 dark:text-gray-600">·</span>
       <span class="text-font-secondary dark:text-gray-400 text-sm">{{ song.date }}</span>
     </div>

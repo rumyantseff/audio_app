@@ -6,7 +6,7 @@
       :style="`background: url('${song.albumCover}') center/cover no-repeat; filter: blur(60px) saturate(2);`"
     />
 
-    <UiBackButton to="/" class="absolute top-6 left-8 z-10" />
+    <SharedBackButton to="/" class="absolute top-6 left-8 z-10" />
 
     <!-- Cover art -->
     <div class="flex-shrink-0 mx-auto md:mx-0">

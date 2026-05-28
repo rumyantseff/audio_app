@@ -1,7 +1,7 @@
 <template>
   <div class="flex items-center gap-4">
-    <UiIconButton icon="mdi-repeat" @click="emit('repeat')" />
-    <UiIconButton icon="mdi-skip-previous-outline" size="lg" @click="emit('previous')" />
+    <SharedIconButton icon="mdi-repeat" @click="emit('repeat')" />
+    <SharedIconButton icon="mdi-skip-previous-outline" size="lg" @click="emit('previous')" />
     <button
       type="button"
       :disabled="!loaded"
@@ -10,8 +10,8 @@
     >
       <i :class="['mdi text-3xl', playing ? 'mdi-pause' : 'mdi-play']" />
     </button>
-    <UiIconButton icon="mdi-skip-next-outline" size="lg" @click="emit('next')" />
-    <UiIconButton icon="mdi-shuffle" />
+    <SharedIconButton icon="mdi-skip-next-outline" size="lg" @click="emit('next')" />
+    <SharedIconButton icon="mdi-shuffle" />
   </div>
 </template>
 

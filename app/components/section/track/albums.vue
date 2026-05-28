@@ -1,5 +1,5 @@
 <template>
-  <UiCarouselSection
+  <SharedCarouselSection
     v-if="albums.length"
     :title="`More by ${artistName}`"
     :see-all-to="`/artist/${artistId}`"
@@ -8,7 +8,7 @@
     <div v-for="album in albums" :key="album.id" class="flex-shrink-0" style="width: 160px">
       <SectionTrackAlbumCard :album="album" />
     </div>
-  </UiCarouselSection>
+  </SharedCarouselSection>
 </template>
 
 <script setup lang="ts">

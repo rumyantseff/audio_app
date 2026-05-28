@@ -1,9 +1,9 @@
 <template>
-  <UiCarouselSection title="Popular Radio Stations" padding-bottom-class="pb-6">
+  <SharedCarouselSection title="Popular Radio Stations" padding-bottom-class="pb-6">
     <div v-for="station in stations" :key="station.id" class="flex-shrink-0" style="width: 160px">
       <SectionRadioCard :station="station" />
     </div>
-  </UiCarouselSection>
+  </SharedCarouselSection>
 </template>
 
 <script setup lang="ts">

@@ -1,5 +1,5 @@
 <template>
-  <UiCarouselSection title="New Releases" root-class="mt-8">
+  <SharedCarouselSection title="New Releases" root-class="mt-8">
     <div
       v-for="song in list"
       :key="song.id"
@@ -7,7 +7,7 @@
     >
       <SectionSongsCard :song="song" @play="playSong(song)" @like="song.likes++" />
     </div>
-  </UiCarouselSection>
+  </SharedCarouselSection>
 </template>
 
 <script setup lang="ts">

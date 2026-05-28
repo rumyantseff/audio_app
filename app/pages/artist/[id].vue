@@ -8,7 +8,7 @@
         <p class="text-font-secondary dark:text-gray-400 text-sm mb-1">{{ formatNumber(artist.listeners) }} monthly listeners</p>
         <h1 class="text-font-primary dark:text-white text-4xl md:text-6xl font-bold">{{ artist.name }}</h1>
       </div>
-      <UiBackButton label="" class="absolute top-6 left-8 z-10" />
+      <SharedBackButton label="" class="absolute top-6 left-8 z-10" />
     </div>
 
     <div class="px-8 py-6">
@@ -25,7 +25,7 @@
           @click="navigateTo(`/track/${song.id}`)"
         >
           <span class="text-font-secondary dark:text-gray-500 text-sm w-5 text-right shrink-0">{{ i + 1 }}</span>
-          <UiTrackThumbnail :src="song.albumCover" :alt="song.songName" size="sm" />
+          <SharedTrackThumbnail :src="song.albumCover" :alt="song.songName" size="sm" />
           <div class="flex-1 min-w-0">
             <p class="text-font-primary dark:text-gray-100 text-sm font-semibold truncate">{{ song.songName }}</p>
             <p class="text-font-secondary dark:text-gray-400 text-xs truncate">{{ song.albumName }}</p>

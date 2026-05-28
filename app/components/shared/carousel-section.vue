@@ -1,16 +1,16 @@
 <template>
   <div :class="rootClass">
-    <UiSectionHeader :title="title" :see-all-to="seeAllTo" />
+    <SharedSectionHeader :title="title" :see-all-to="seeAllTo" />
 
     <div class="relative -mr-8">
-      <UiFadeOverlay v-if="canScrollLeft" side="left" />
+      <SharedFadeOverlay v-if="canScrollLeft" side="left" />
       <i
         v-if="canScrollLeft"
         class="mdi mdi-chevron-left absolute left-3 top-1/2 -translate-y-1/2 z-20 text-4xl text-primary dark:text-tertiary cursor-pointer hover:scale-125 transition-transform drop-shadow-lg"
         @click="scrollLeft"
       />
 
-      <UiFadeOverlay v-if="canScrollRight" side="right" />
+      <SharedFadeOverlay v-if="canScrollRight" side="right" />
       <i
         v-if="canScrollRight"
         class="mdi mdi-chevron-right absolute right-3 top-1/2 -translate-y-1/2 z-20 text-4xl text-primary dark:text-tertiary cursor-pointer hover:scale-125 transition-transform drop-shadow-lg"

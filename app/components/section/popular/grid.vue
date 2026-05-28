@@ -2,7 +2,7 @@
   <div class="mt-10">
     <!-- Mobile: column-based carousel -->
     <div class="md:hidden">
-      <UiCarouselSection title="Most Popular" root-class="" gap-class="gap-4" padding-bottom-class="pb-6">
+      <SharedCarouselSection title="Most Popular" root-class="" gap-class="gap-4" padding-bottom-class="pb-6">
         <div
           v-for="(col, ci) in columns"
           :key="ci"
@@ -10,12 +10,12 @@
         >
           <SectionPopularTrackItem v-for="song in col" :key="song.id" :song="song" />
         </div>
-      </UiCarouselSection>
+      </SharedCarouselSection>
     </div>
 
     <!-- Desktop: 2-column grid -->
     <div class="hidden md:block">
-      <UiSectionHeader title="Most Popular" />
+      <SharedSectionHeader title="Most Popular" />
       <div class="grid grid-cols-2 gap-y-2 gap-x-4 pt-3 -mt-3 pb-6">
         <SectionPopularTrackItem v-for="song in songs" :key="song.id" :song="song" />
       </div>

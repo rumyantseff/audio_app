@@ -2,7 +2,7 @@
   <div v-if="album" class="w-full px-8 py-6">
     <!-- Header -->
     <div class="flex flex-col md:flex-row gap-8 items-end mb-10">
-      <UiBackButton label="" class="self-start mb-2" />
+      <SharedBackButton label="" class="self-start mb-2" />
       <div class="w-48 h-48 rounded-2xl overflow-hidden shadow-2xl shrink-0">
         <img :src="album.cover" :alt="album.name" class="w-full h-full object-cover" />
       </div>

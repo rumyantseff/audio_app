@@ -4,7 +4,7 @@
       v-if="show"
       class="absolute right-0 top-16 w-56 bg-white dark:bg-gray-800 rounded-2xl shadow-app z-50 overflow-hidden"
     >
-      <UserMenuProfile />
+      <AppHeaderUserMenuProfile />
 
       <hr class="border-t border-font-secondary/20 dark:border-white/10" />
 

@@ -25,7 +25,7 @@
         class="mt-1 ml-6 relative flex flex-col gap-0.5"
       >
         <span class="absolute left-0 top-0 bottom-3 w-px bg-font-secondary/30 dark:bg-white/15" />
-        <NavSubItem
+        <AppNavigationSubItem
           v-for="sub in children"
           :key="sub.to"
           :to="sub.to"

@@ -3,20 +3,20 @@
     :class="['fixed left-0 top-0 h-full z-50 flex flex-col bg-pentanary/70 dark:bg-gray-900/70 backdrop-blur-xl backdrop-saturate-150 transition-transform duration-300', isOpen ? 'translate-x-0 overflow-visible' : '-translate-x-full overflow-hidden']"
     :style="{ width: width + 'px' }"
   >
-    <NavHeader @close="close" />
+    <AppNavigationHeader @close="close" />
 
-    <NavSection>
-      <NavItem to="/" icon="mdi-home" label="Home" :hide-pill="!isOpen" @click="close()" />
-    </NavSection>
+    <AppNavigationSection>
+      <AppNavigationItem to="/" icon="mdi-home" label="Home" :hide-pill="!isOpen" @click="close()" />
+    </AppNavigationSection>
 
-    <NavSection title="Genres" root-class="mt-6 px-8">
-      <NavItem icon="mdi-music-circle" label="Styles" :children="genreItems" :hide-pill="!isOpen" />
-    </NavSection>
+    <AppNavigationSection title="Genres" root-class="mt-6 px-8">
+      <AppNavigationItem icon="mdi-music-circle" label="Styles" :children="genreItems" :hide-pill="!isOpen" />
+    </AppNavigationSection>
 
-    <NavResizeHandle @start-resize="startResize" />
+    <AppNavigationResizeHandle @start-resize="startResize" />
   </nav>
 
-  <NavOverlay :show="isOpen" @close="close" />
+  <AppNavigationOverlay :show="isOpen" @close="close" />
 </template>
 
 <script setup lang="ts">

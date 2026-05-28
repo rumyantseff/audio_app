@@ -1,13 +1,13 @@
 <template>
   <div class="relative">
     <!-- Pill on parent row, only when parent itself is the active leaf route -->
-    <NavPill
+    <AppNavigationPill
       v-if="!children && to"
       :show="isOwnActive && !hidePill"
       position-style="right: -2.25rem; top: 1.4rem; transform: translateY(-50%)"
     />
 
-    <NavItemLink
+    <AppNavigationItemLink
       v-if="!children && to"
       :to="to"
       :icon="icon"
@@ -15,7 +15,7 @@
       :mini="mini"
     />
 
-    <NavItemExpandable
+    <AppNavigationItemExpandable
       v-else-if="children"
       :icon="icon"
       :label="label"

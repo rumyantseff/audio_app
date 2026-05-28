@@ -6,7 +6,7 @@
     padding-bottom-class="pb-4"
   >
     <div v-for="album in albums" :key="album.id" class="flex-shrink-0" style="width: 160px">
-      <TrackAlbumCard :album="album" />
+      <FeaturesTrackAlbumCard :album="album" />
     </div>
   </UiCarouselSection>
 </template>

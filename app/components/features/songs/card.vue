@@ -15,7 +15,7 @@
 
     <div class="absolute inset-x-0 bottom-0 p-5 flex items-end gap-4">
       <div class="flex-1 min-w-0">
-        <h3 class="text-white text-xl font-bold truncate leading-tight">{{ song.songName }}</h3>
+        <UiOverlayHeading :text="song.songName" />
         <p
           class="text-white/80 text-sm truncate mt-1 hover:text-tertiary transition-colors"
           @click.stop="navigateTo(`/artist/${song.artistId}`)"

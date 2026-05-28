@@ -14,7 +14,7 @@
     <div class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/85 via-black/40 to-transparent pointer-events-none" />
 
     <div class="absolute inset-x-0 bottom-0 p-5">
-      <h3 class="text-white text-xl font-bold truncate leading-tight">{{ album.name }}</h3>
+      <UiOverlayHeading :text="album.name" />
       <p v-if="album.tracks" class="text-white/80 text-sm truncate mt-1">{{ album.tracks }} tracks</p>
     </div>
 

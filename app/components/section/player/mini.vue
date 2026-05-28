@@ -1,11 +1,8 @@
 <template>
   <div class="w-full max-w-player mx-4">
     <div class="bg-white rounded-2xl shadow-app min-w-player">
-      <!-- Close -->
       <div class="flex justify-end px-2 pt-2">
-        <button type="button" class="w-9 h-9 flex items-center justify-center text-font-primary hover:text-primary transition-colors" @click="emit('close')">
-          <i class="mdi mdi-close text-xl" />
-        </button>
+        <SectionPlayerMiniCloseButton @click="emit('close')" />
       </div>
 
       <audio :src="song.songSrc" preload="auto" autoplay ref="audioEl" />

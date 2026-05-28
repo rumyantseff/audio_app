@@ -6,24 +6,15 @@
       style="background: rgba(13,74,86,0.08)"
       @click="onClick"
     >
-      <div
+      <SectionTrackWaveformBar
         v-for="(h, i) in bars"
         :key="i"
-        class="flex-1 rounded-sm"
-        :style="{ height: `${h}%`, minWidth: '2px' }"
-        :class="(i / bars.length * 100) <= percentage
-          ? 'bg-primary dark:bg-tertiary opacity-90'
-          : 'bg-font-secondary/25 dark:bg-gray-500/30'"
+        :height="h"
+        :active="(i / bars.length * 100) <= percentage"
       />
-      <div
-        class="absolute top-0 bottom-0 w-0.5 bg-primary dark:bg-tertiary pointer-events-none"
-        :style="{ left: `${percentage}%` }"
-      />
+      <SectionTrackWaveformCursor :percentage="percentage" />
     </div>
-    <div class="flex justify-between mt-1.5 px-1">
-      <span class="text-font-secondary dark:text-gray-400 text-xs">{{ currentTime }}</span>
-      <span class="text-font-secondary dark:text-gray-400 text-xs">{{ duration }}</span>
-    </div>
+    <SectionTrackWaveformTimeLabels :current-time="currentTime" :duration="duration" />
   </div>
 </template>
 

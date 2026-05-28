@@ -1,22 +1,12 @@
 <template>
   <div class="relative rounded-2xl overflow-hidden px-8 pt-16 pb-8 flex flex-col md:flex-row gap-10 items-start">
-    <!-- Hero background blur -->
-    <div
-      class="absolute inset-0 z-0 opacity-40 dark:opacity-25 pointer-events-none"
-      :style="`background: url('${song.albumCover}') center/cover no-repeat; filter: blur(60px) saturate(2);`"
-    />
+    <SectionTrackDetailHeroBg :image="song.albumCover" />
 
     <SharedBackButton to="/" class="absolute top-6 left-8 z-10" />
 
-    <!-- Cover art -->
-    <div class="flex-shrink-0 mx-auto md:mx-0">
-      <div class="w-60 h-60 rounded-3xl overflow-hidden shadow-2xl">
-        <img :src="song.albumCover" :alt="song.albumName" class="w-full h-full object-cover" />
-      </div>
-    </div>
+    <SectionTrackDetailCover :src="song.albumCover" :alt="song.albumName" />
 
-    <!-- Info + player -->
-    <div class="flex-1 min-w-0">
+    <SectionTrackDetailInfoPanel>
       <SectionTrackHeroInfo :song="song" />
       <SectionTrackStats :song="song" />
 
@@ -47,7 +37,7 @@
           @change="setVolume"
         />
       </div>
-    </div>
+    </SectionTrackDetailInfoPanel>
   </div>
 </template>
 

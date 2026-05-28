@@ -8,13 +8,7 @@
         <p class="text-font-secondary dark:text-gray-400 text-sm mb-1">{{ formatNumber(artist.listeners) }} monthly listeners</p>
         <h1 class="text-font-primary dark:text-white text-4xl md:text-6xl font-bold">{{ artist.name }}</h1>
       </div>
-      <button
-        type="button"
-        class="absolute top-6 left-8 z-10 flex items-center gap-2 text-font-primary dark:text-gray-300 hover:text-secondary transition-colors"
-        @click="navigateTo(-1 as any)"
-      >
-        <i class="mdi mdi-arrow-left text-xl" />
-      </button>
+      <SharedBackButton label="" class="absolute top-6 left-8 z-10" />
     </div>
 
     <div class="px-8 py-6">
@@ -31,9 +25,7 @@
           @click="navigateTo(`/track/${song.id}`)"
         >
           <span class="text-font-secondary dark:text-gray-500 text-sm w-5 text-right shrink-0">{{ i + 1 }}</span>
-          <div class="w-10 h-10 rounded-lg overflow-hidden shrink-0">
-            <img :src="song.albumCover" :alt="song.songName" class="w-full h-full object-cover" />
-          </div>
+          <SharedTrackThumbnail :src="song.albumCover" :alt="song.songName" size="sm" />
           <div class="flex-1 min-w-0">
             <p class="text-font-primary dark:text-gray-100 text-sm font-semibold truncate">{{ song.songName }}</p>
             <p class="text-font-secondary dark:text-gray-400 text-xs truncate">{{ song.albumName }}</p>

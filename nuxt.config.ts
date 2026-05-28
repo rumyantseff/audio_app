@@ -19,16 +19,10 @@ export default defineNuxtConfig({
     defaultLocale: 'en',
     langDir: '../i18n/locales/',
     strategy: 'prefix_except_default',
-    pages: {
-      'index': { en: '/', sk: '/' },
-      'track/[id]': { en: '/track/[id]', sk: '/track/[id]' },
-      'artist/[id]': { en: '/artist/[id]', sk: '/artist/[id]' },
-      'album/[id]': { en: '/album/[id]', sk: '/album/[id]' },
-      'genres/[slug]': { en: '/genres/[slug]', sk: '/genres/[slug]' },
-    },
   },
 
   css: [
+    '~/assets/css/main.css',
     '@mdi/font/css/materialdesignicons.min.css',
     '~/assets/css/nav-active.css',
   ],
@@ -54,21 +48,7 @@ export default defineNuxtConfig({
   },
 
   components: [
-    { path: '~/components/ui', pathPrefix: false },
-    { path: '~/components/app', pathPrefix: false },
-    { path: '~/components/app/icons', pathPrefix: false },
-    { path: '~/components/app/header', pathPrefix: false },
-    { path: '~/components/app/header/user-menu', pathPrefix: false },
-    { path: '~/components/app/navigation', pathPrefix: false },
-    { path: '~/components/app/footer', pathPrefix: false },
-    { path: '~/components/features', pathPrefix: false },
-    { path: '~/components/features/home', pathPrefix: false },
-    { path: '~/components/features/songs', pathPrefix: false },
-    { path: '~/components/features/player', pathPrefix: false },
-    { path: '~/components/features/banner', pathPrefix: false },
-    { path: '~/components/features/track', pathPrefix: false },
-    { path: '~/components/features/radio', pathPrefix: false },
-    { path: '~/components/features/popular', pathPrefix: false },
+    { path: '~/components', pathPrefix: true },
   ],
 
   future: { compatibilityVersion: 4 },

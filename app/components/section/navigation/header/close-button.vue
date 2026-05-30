@@ -1,10 +1,10 @@
 <template>
   <button
     type="button"
-    class="w-10 h-10 flex items-center justify-center rounded-full border border-font-secondary/30 text-font-primary dark:text-font-tertiary hover:border-secondary transition-colors shrink-0"
+    class="w-12 h-12 flex items-center justify-center text-font-primary dark:text-font-tertiary transition-colors shrink-0"
     @click="emit('click')"
   >
-    <i class="mdi mdi-close text-xl" />
+    <i class="mdi mdi-close text-2xl" />
   </button>
 </template>
 

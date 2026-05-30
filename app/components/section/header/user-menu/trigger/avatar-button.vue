@@ -1,6 +1,6 @@
 <template>
-  <button type="button" class="relative focus:outline-none" @click="emit('click')">
-    <img :src="src" :alt="alt" class="w-10 h-12 object-cover" />
+  <button type="button" class="relative focus:outline-none shrink-0" @click="emit('click')">
+    <img :src="src" :alt="alt" class="w-12 h-12 rounded-lg object-cover shadow-app" />
   </button>
 </template>
 

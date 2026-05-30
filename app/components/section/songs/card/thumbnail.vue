@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative w-14 h-14 rounded-xl overflow-hidden flex-shrink-0 shadow-lg ring-2 ring-white/30 cursor-pointer hover:ring-tertiary transition-all"
+    class="relative w-10 h-10 rounded overflow-hidden flex-shrink-0 shadow-lg ring-2 ring-white/30 cursor-pointer hover:ring-tertiary transition-all"
     @click.stop="navigateTo(`/album/${albumId}`)"
   >
     <img :src="src" :alt="alt" class="w-full h-full object-cover" />

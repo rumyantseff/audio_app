@@ -1,10 +1,10 @@
 <template>
   <div
-    class="flex-1 rounded-sm"
-    :style="{ height: `${height}%`, minWidth: '2px' }"
+    class="w-[3px] shrink-0 rounded-full transition-colors duration-150"
+    :style="{ height: `${height}%` }"
     :class="active
-      ? 'bg-primary dark:bg-tertiary opacity-90'
-      : 'bg-font-secondary/25 dark:bg-gray-500/30'"
+      ? 'bg-primary dark:bg-tertiary'
+      : 'bg-orange-950 dark:bg-gray-500/30'"
   />
 </template>
 

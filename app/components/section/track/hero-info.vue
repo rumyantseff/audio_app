@@ -1,6 +1,6 @@
 <template>
   <div class="mb-5">
-    <SectionTrackHeroInfoAlbum :name="song.albumName" />
+    <SectionTrackHeroInfoAlbum :name="song.albumName" :album-id="song.albumId" />
     <SectionTrackHeroInfoTitle :name="song.songName" />
     <div class="flex items-center gap-3 mt-3">
       <SectionTrackHeroInfoArtistMeta :artist-id="song.artistId" :name="song.artistName" :avatar="song.artistAvatar" />

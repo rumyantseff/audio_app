@@ -1,69 +1,83 @@
 <template>
   <div v-if="album" class="w-full px-8 py-6">
-    <!-- Header -->
-    <div class="flex flex-col md:flex-row gap-8 items-end mb-10">
-      <SharedBackButton label="" class="self-start mb-2" />
-      <div class="w-48 h-48 rounded-2xl overflow-hidden shadow-2xl shrink-0">
-        <img :src="album.cover" :alt="album.name" class="w-full h-full object-cover" />
-      </div>
-      <div class="flex flex-col gap-2">
-        <p class="text-font-secondary dark:text-gray-400 text-xs uppercase tracking-widest font-semibold">Album</p>
-        <h1 class="text-font-primary dark:text-white text-3xl md:text-5xl font-bold">{{ album.name }}</h1>
-        <div
-          class="flex items-center gap-2 cursor-pointer group w-fit"
-          @click="navigateTo(`/artist/${album.artist_id}`)"
-        >
-          <div v-if="artist" class="w-7 h-7 rounded-full overflow-hidden">
-            <img :src="artist.avatar" :alt="artist.name" class="w-full h-full object-cover" />
+    <div class="relative rounded-2xl overflow-hidden px-8 pt-16 pb-8 min-h-[calc(100vh-9rem)]">
+      <SectionTrackDetailHeroBg :image="album.cover" />
+
+      <SharedBackButton class="absolute top-6 left-8 z-10" />
+
+      <!-- Upper row: left (cover + info) / right (full tracklist) -->
+      <div class="relative z-10 flex flex-col md:flex-row gap-10 items-start mb-8">
+        <div class="flex flex-col md:flex-row gap-10 items-start flex-1 min-w-0">
+          <div class="flex-shrink-0 mx-auto md:mx-0">
+            <div class="relative w-60 h-60 rounded-3xl overflow-hidden shadow-2xl">
+              <img :src="album.cover" :alt="album.name" class="w-full h-full object-cover" />
+              <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-b from-transparent to-primary/10 dark:to-primary/30 pointer-events-none" />
+            </div>
           </div>
-          <p class="text-font-primary dark:text-gray-200 text-sm font-semibold group-hover:text-secondary transition-colors">{{ artist?.name }}</p>
-        </div>
-        <p class="text-font-secondary dark:text-gray-400 text-sm">{{ album.year }} · {{ album.tracks }} tracks · {{ album.duration }}</p>
-      </div>
-    </div>
 
-    <!-- Tracklist -->
-    <div class="flex flex-col gap-1">
-      <div
-        v-for="(song, i) in tracks"
-        :key="song.id"
-        class="flex items-center gap-4 px-4 py-3 rounded-xl hover:bg-primary/5 dark:hover:bg-white/5 cursor-pointer transition-colors"
-        @click="navigateTo(`/track/${song.id}`)"
-      >
-        <span class="text-font-secondary dark:text-gray-500 text-sm w-5 text-right shrink-0">{{ i + 1 }}</span>
-        <div class="flex-1 min-w-0">
-          <p class="text-font-primary dark:text-gray-100 text-sm font-semibold truncate">{{ song.songName }}</p>
-          <p class="text-font-secondary dark:text-gray-400 text-xs">{{ formatNumber(song.hears) }} plays</p>
+          <div class="flex-1 min-w-0">
+            <p class="text-xs font-semibold tracking-widest uppercase text-secondary dark:text-tertiary mb-2">Album</p>
+            <h1 class="text-font-primary dark:text-gray-100 font-bold text-3xl md:text-4xl leading-tight mb-3">{{ album.name }}</h1>
+            <SectionTrackHeroInfoArtistMeta
+              v-if="artist"
+              :artist-id="artist.id"
+              :name="artist.name"
+              :avatar="artist.avatar"
+              class="mb-3"
+            />
+            <p class="text-font-secondary dark:text-gray-400 text-sm">
+              {{ album.year }} · {{ album.tracks }} tracks · {{ album.duration }}
+            </p>
+          </div>
         </div>
-        <span class="flex items-center gap-1 text-font-secondary dark:text-gray-400 text-xs shrink-0">
-          <i class="mdi mdi-heart-outline text-sm" />
-          {{ formatNumber(song.likes) }}
-        </span>
+
+        <div class="w-full md:w-[28rem] lg:w-[48rem] shrink-0">
+          <SectionTrackDetailTracklist
+            :songs="tracks"
+            :current-song-id="currentSong?.id ?? -1"
+            :album-id="album.id"
+            :hide-more="true"
+            @select="onSelectTrack"
+          />
+        </div>
       </div>
     </div>
   </div>
 
-  <div v-else class="w-full px-8 py-6">
-    <p class="text-font-secondary">Album not found.</p>
-  </div>
+  <SectionTrackNotFound v-else-if="!pending" />
 </template>
 
 <script setup lang="ts">
-import { formatNumber } from '~/composables/useFormatNumber'
+import type { Song } from '~/types/song'
 
 const route = useRoute()
 const { getAlbum, getSongsByAlbum, getArtist } = useSupabaseSongs()
+const { playSong, currentSong } = useAudioPlayer()
 
-const album = ref()
-const tracks = ref([])
-const artist = ref()
+const { data, pending } = useAsyncData(
+  () => `album-${route.params.id}`,
+  async () => {
+    const id = Number(route.params.id)
+    const album = await getAlbum(id)
+    if (!album) return { album: null, tracks: [] as Song[], artist: null }
+    const [tracks, artist] = await Promise.all([
+      getSongsByAlbum(id),
+      getArtist(album.artist_id),
+    ])
+    return { album, tracks, artist }
+  },
+  { watch: [() => route.params.id] },
+)
 
-onMounted(async () => {
-  const id = Number(route.params.id)
-  album.value = await getAlbum(id)
-  ;[tracks.value, artist.value] = await Promise.all([
-    getSongsByAlbum(id),
-    album.value ? getArtist(album.value.artist_id) : Promise.resolve(null),
-  ])
+const album = computed(() => data.value?.album ?? null)
+const tracks = computed<Song[]>(() => data.value?.tracks ?? [])
+const artist = computed(() => data.value?.artist ?? null)
+
+function onSelectTrack(song: Song) {
+  playSong(song, tracks.value)
+}
+
+watchEffect(() => {
+  if (album.value) useHead({ title: `${album.value.name} – Album` })
 })
 </script>

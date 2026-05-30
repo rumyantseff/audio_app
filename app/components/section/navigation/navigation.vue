@@ -1,6 +1,9 @@
 <template>
   <nav
-    :class="['fixed left-0 top-0 h-full z-50 flex flex-col bg-pentanary/70 dark:bg-gray-900/70 backdrop-blur-xl backdrop-saturate-150 transition-transform duration-300', isOpen ? 'translate-x-0 overflow-visible' : '-translate-x-full overflow-hidden']"
+    :class="[
+      'fixed rounded-tr-xl rounded-br-xl top-2 bottom-2 z-50 flex flex-col bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl backdrop-saturate-150 transition-transform duration-300',
+      isOpen ? 'translate-x-0 overflow-visible' : '-translate-x-full overflow-hidden'
+    ]"
     :style="{ width: width + 'px' }"
   >
     <SectionNavigationHeader @close="close" />

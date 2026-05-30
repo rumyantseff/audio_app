@@ -12,18 +12,20 @@
     </div>
   </template>
 
-  <SectionTrackNotFound v-else />
+  <SectionTrackNotFound v-else-if="!pending" />
 </template>
 
 <script setup lang="ts">
-import type { Song } from '~/types/song'
-
 const route = useRoute()
 const { getSong } = useSupabaseSongs()
-const song = ref<Song | null>(null)
 
-onMounted(async () => {
-  song.value = await getSong(Number(route.params.id))
+const { data: song, pending } = useAsyncData(
+  () => `track-${route.params.id}`,
+  () => getSong(Number(route.params.id)),
+  { watch: [() => route.params.id] },
+)
+
+watchEffect(() => {
   if (song.value) {
     useHead({ title: `${song.value.songName} – ${song.value.artistName}` })
   }

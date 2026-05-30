@@ -1,12 +1,16 @@
 <template>
-  <div class="absolute inset-x-0 bottom-0 p-5 flex items-end gap-4">
-    <div class="flex-1 min-w-0">
-      <SharedOverlayHeading :text="song.songName" />
-      <SectionSongsCardArtist :name="song.artistName" :artist-id="song.artistId" />
-      <SectionSongsCardStatsRow :hears="song.hears" :likes="song.likes" @like="emit('like')" />
+  <div class="absolute inset-x-0 bottom-0 p-5">
+    <!-- Thumbnail on the same row as heading + artist -->
+    <div class="flex items-center gap-4">
+      <SectionSongsCardThumbnail :src="song.albumCover" :alt="song.albumName" :album-id="song.albumId" />
+
+      <div class="flex-1 min-w-0">
+        <SharedOverlayHeading :text="song.songName" />
+        <SectionSongsCardArtist :name="song.artistName" :artist-id="song.artistId" />
+      </div>
     </div>
 
-    <SectionSongsCardThumbnail :src="song.albumCover" :alt="song.albumName" :album-id="song.albumId" />
+    <SectionSongsCardStatsRow :hears="song.hears" :likes="song.likes" @like="emit('like')" />
   </div>
 </template>
 

@@ -22,12 +22,12 @@
   /* Range slider - shared styles for seek and volume */
   .range-slider {
     @apply w-full h-1 appearance-none rounded-full cursor-pointer outline-none;
-    background: #8d9db1;
+    background: #CDB9A7;
   }
 
   .range-slider::-webkit-slider-thumb {
     @apply appearance-none w-4 h-4 rounded-full cursor-pointer;
-    background: #2e384d;
+    background: #331600;
     margin-top: -6px;
   }
 
@@ -37,12 +37,12 @@
 
   .range-slider::-moz-range-thumb {
     @apply w-4 h-4 rounded-full cursor-pointer border-0;
-    background: #2e384d;
+    background: #331600;
   }
 
   .range-slider::-moz-range-track {
     @apply h-1 rounded-full;
-    background: #8d9db1;
+    background: #CDB9A7;
   }
 
   .range-slider:disabled {

@@ -1,9 +1,9 @@
 <template>
   <header
-    class="fixed top-0 left-0 right-0 z-40 h-24 flex items-center bg-pentanary dark:bg-gray-900 px-8 rounded-b-xl transition-colors duration-300"
+    class="fixed top-2 inset-x-4 md:inset-x-8 z-40 h-20 flex items-center px-2 rounded-2xl backdrop-blur-xl bg-white/80 dark:bg-gray-900/80 transition-colors duration-300"
   >
     <SectionHeaderMenuButton />
-    <SectionHeaderLogo class="ml-4" />
+    <SectionNavigationHeaderBrand />
     <div class="flex-1" />
     <SectionHeaderSearch />
     <SectionHeaderUserMenu />

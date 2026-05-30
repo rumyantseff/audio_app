@@ -1,5 +1,5 @@
 <template>
-  <div ref="menuRoot" class="relative">
+  <div ref="menuRoot" class="relative w-fit">
     <SectionHeaderUserMenuTrigger @toggle="open = !open" />
     <SectionHeaderUserMenuDropdown :show="open" @close="open = false" />
   </div>

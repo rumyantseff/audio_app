@@ -1,5 +1,5 @@
 <template>
-  <span class="text-font-primary dark:text-gray-100 text-sm font-semibold">{{ name }}</span>
+  <p class="text-font-primary dark:text-gray-100 text-sm font-semibold truncate">{{ name }}</p>
 </template>
 
 <script setup lang="ts">

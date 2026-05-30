@@ -1,5 +1,5 @@
 <template>
-  <div class="h-24 flex items-center px-8 gap-4 shrink-0">
+  <div class="h-24 flex items-center px-6 gap-2 shrink-0">
     <SectionNavigationHeaderCloseButton @click="emit('close')" />
     <SectionNavigationHeaderBrand />
   </div>

@@ -4,8 +4,9 @@
     :value="modelValue"
     type="text"
     :placeholder="placeholder"
-    class="flex-1 h-10 pr-4 bg-transparent text-sm text-font-primary dark:text-gray-100 placeholder-font-secondary dark:placeholder-gray-500 outline-none"
+    class="flex-1 min-w-0 h-10 pr-2 bg-transparent text-sm text-font-primary dark:text-gray-100 placeholder-font-secondary dark:placeholder-gray-500 outline-none"
     @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
+    @keydown.enter="emit('submit')"
     @keydown.escape="emit('close')"
   />
 </template>
@@ -22,6 +23,7 @@ const props = withDefaults(
 
 const emit = defineEmits<{
   'update:modelValue': [string]
+  submit: []
   close: []
 }>()
 

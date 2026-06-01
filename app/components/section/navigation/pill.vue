@@ -5,7 +5,7 @@
       class="absolute z-10 pointer-events-none"
       :style="positionStyle"
     >
-      <SectionNavigationPillHalo />
+      <!-- <SectionNavigationPillHalo /> -->
       <SectionNavigationPillBar />
     </span>
   </Transition>

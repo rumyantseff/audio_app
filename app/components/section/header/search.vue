@@ -3,7 +3,7 @@
   <SectionHeaderSearchMobile v-if="isOpen && isMobile" v-model="query" @close="close" />
 
   <template v-else>
-    <SectionHeaderSearchDesktop v-model="query" :is-open="isOpen" @toggle="toggle" @close="close" />
+    <SectionHeaderSearchDesktop v-model="query" :is-open="isOpen" @toggle="toggle" @close="close" @search="runSearch" />
     <SectionHeaderSearchTriggerButton @click="open" />
   </template>
 </template>
@@ -38,5 +38,11 @@ function toggle() {
 function close() {
   isOpen.value = false
   query.value = ''
+}
+
+function runSearch(q: string) {
+  // TODO: wire up to a real search results page/endpoint once it exists.
+  // For now the button just triggers the search action with the current query.
+  console.info('[search] query:', q)
 }
 </script>

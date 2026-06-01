@@ -1,6 +1,6 @@
 <template>
-  <div class="flex items-stretch rounded-lg overflow-hidden shadow-app">
-    <SharedThemeToggle class="rounded-none" />
+  <div class="flex items-center gap-2">
+    <SharedThemeToggle />
     <SectionHeaderUserMenuTriggerAvatarButton @click="emit('toggle')" />
   </div>
 </template>

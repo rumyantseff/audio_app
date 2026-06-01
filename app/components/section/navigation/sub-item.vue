@@ -8,7 +8,7 @@
 
     <NuxtLink
       :to="to"
-      class="block ml-4 px-4 py-2 rounded-xl text-[14px] font-medium text-font-secondary dark:text-gray-400 hover:text-font-primary dark:hover:text-gray-100 hover:bg-primary/5 dark:hover:bg-white/5 transition-colors"
+      class="block ml-4 px-4 py-2 rounded-xl text-[14px] font-medium text-orange-950 dark:text-orange-50 hover:bg-primary/5 dark:hover:bg-white/5 transition-colors"
       active-class="navActive"
     >
       <span class="truncate">{{ label }}</span>

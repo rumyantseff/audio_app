@@ -5,7 +5,7 @@
     :class="[
       isActive
         ? 'navActivee font-semibold'
-        : 'text-font-secondary dark:text-gray-400 hover:text-font-primary dark:hover:text-gray-100'
+        : 'text-orange-950 dark:text-orange-50'
     ]"
     @click="emit('toggle')"
   >

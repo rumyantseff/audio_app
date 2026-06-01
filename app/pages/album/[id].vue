@@ -1,9 +1,9 @@
 <template>
   <div v-if="album" class="w-full px-8 py-6">
-    <div class="relative rounded-2xl overflow-hidden px-8 pt-16 pb-8 min-h-[calc(100vh-9rem)]">
+    <div class="relative rounded-2xl overflow-hidden px-8 pt-24 pb-8 min-h-[calc(100vh-9rem)]">
       <SectionTrackDetailHeroBg :image="album.cover" />
 
-      <SharedBackButton class="absolute top-6 left-8 z-10" />
+      <SharedBackButton class="absolute top-6 left-6 z-10" />
 
       <!-- Upper row: left (cover + info) / right (full tracklist) -->
       <div class="relative z-10 flex flex-col md:flex-row gap-10 items-start mb-8">

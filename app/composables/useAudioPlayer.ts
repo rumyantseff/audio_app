@@ -23,6 +23,11 @@ export function useAudioPlayer() {
   const currentTimeSec = useState('player-current-time', () => 0)
   const totalDuration = useState('player-duration', () => 0)
   const playerVolume = useState('player-volume', () => 0.35)
+  const repeat = useState('player-repeat', () => false)
+  const shuffle = useState('player-shuffle', () => false)
+
+  const toggleRepeat = () => { repeat.value = !repeat.value }
+  const toggleShuffle = () => { shuffle.value = !shuffle.value }
 
   const formatTime = (s: number) => {
     if (!Number.isFinite(s) || s < 0) return '0:00'
@@ -106,9 +111,25 @@ export function useAudioPlayer() {
   function next() {
     const list = queue.value
     if (!list.length || !currentSong.value) return
+    if (shuffle.value && list.length > 1) {
+      const others = list.filter(s => s.id !== currentSong.value!.id)
+      const pick = others[Math.floor(Math.random() * others.length)]
+      if (pick) playSong(pick)
+      return
+    }
     const idx = list.findIndex(s => s.id === currentSong.value!.id)
     const nextSong = list[idx + 1]
     if (nextSong) playSong(nextSong)
+  }
+
+  // Called when a track finishes — repeat replays it, otherwise advance.
+  function onEnded() {
+    if (repeat.value && audioEl.value) {
+      audioEl.value.currentTime = 0
+      audioEl.value.play().catch(() => {})
+      return
+    }
+    next()
   }
 
   function previous() {
@@ -142,7 +163,7 @@ export function useAudioPlayer() {
     })
     el.addEventListener('play', () => { playing.value = true })
     el.addEventListener('pause', () => { playing.value = false })
-    el.addEventListener('ended', () => { playing.value = false; next() })
+    el.addEventListener('ended', () => { playing.value = false; onEnded() })
 
     watch(playerVolume, (val) => { if (audioEl.value) audioEl.value.volume = val })
 
@@ -163,6 +184,10 @@ export function useAudioPlayer() {
     playerVolume,
     volumeIcon,
     bars,
+    repeat,
+    shuffle,
+    toggleRepeat,
+    toggleShuffle,
     isCurrent,
     playSong,
     togglePlay,

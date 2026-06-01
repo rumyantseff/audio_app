@@ -8,7 +8,7 @@
         <p class="text-font-secondary dark:text-gray-400 text-sm mb-1">{{ formatNumber(artist.listeners) }} monthly listeners</p>
         <h1 class="text-font-primary dark:text-white text-4xl md:text-6xl font-bold">{{ artist.name }}</h1>
       </div>
-      <SharedBackButton label="" class="absolute top-6 left-8 z-10" />
+      <SharedBackButton label="" class="absolute top-6 left-6 z-10" />
     </div>
 
     <div class="px-8 py-6">

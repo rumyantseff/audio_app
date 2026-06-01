@@ -1,11 +1,10 @@
 <template>
   <button
     type="button"
-    class="flex items-center gap-2 text-font-secondary hover:text-font-primary dark:text-gray-400 dark:hover:text-gray-100 transition-colors text-sm font-medium"
+    class="flex items-center justify-center text-font-primary hover:opacity-70 dark:text-gray-300 dark:hover:text-white transition-all"
     @click="onClick"
   >
-    <i class="mdi mdi-arrow-left text-lg" />
-    {{ label }}
+    <i class="mdi mdi-chevron-left text-4xl" />
   </button>
 </template>
 

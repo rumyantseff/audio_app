@@ -9,7 +9,7 @@
       :alt="name"
       :class="['rounded-full object-cover', avatarSize]"
     />
-    <span class="text-font-secondary dark:text-gray-400 text-sm font-medium group-hover/artist:text-secondary dark:group-hover/artist:text-tertiary transition-colors">
+    <span class="text-font-primary dark:text-gray-400 text-sm font-medium group-hover/artist:text-secondary dark:group-hover/artist:text-tertiary transition-colors">
       {{ name }}
     </span>
   </div>

@@ -12,9 +12,13 @@
         <SectionPlayerBarControls
           :playing="playing"
           :loaded="loaded"
+          :shuffle="shuffle"
+          :repeat="repeat"
           @toggle-play="togglePlay"
           @previous="previous"
           @next="next"
+          @toggle-shuffle="toggleShuffle"
+          @toggle-repeat="toggleRepeat"
         />
 
         <SectionPlayerBarTime :current="currentTime" :total="duration" />
@@ -39,6 +43,7 @@
 <script setup lang="ts">
 const {
   currentSong, loaded, playing, percentage, currentTime, duration,
-  bars, togglePlay, seekToPercent, next, previous,
+  bars, shuffle, repeat, togglePlay, seekToPercent, next, previous,
+  toggleShuffle, toggleRepeat,
 } = useAudioPlayer()
 </script>

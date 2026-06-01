@@ -1,7 +1,7 @@
 <template>
   <NuxtLink
     :to="to"
-    class="flex items-center gap-4 px-2 py-1 rounded-xl cursor-pointer transition-colors text-font-secondary dark:text-gray-400 hover:text-font-primary dark:hover:text-gray-100 hover:bg-primary/5 dark:hover:bg-white/5"
+    class="flex items-center gap-4 px-2 py-1 rounded-xl cursor-pointer transition-colors text-orange-950 dark:text-orange-50 hover:bg-primary/5 dark:hover:bg-white/5"
     active-class="navActivee"
   >
     <i :class="['mdi', iconResolved, 'text-[20px] shrink-0 opacity-80']" />

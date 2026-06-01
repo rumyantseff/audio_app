@@ -2,7 +2,7 @@
   <div :class="rootClass">
     <h6
       v-if="title"
-      class="text-font-secondary dark:text-gray-500 font-medium text-xs tracking-widest uppercase mb-2"
+      class="text-orange-950 dark:text-orange-50 font-medium text-xs tracking-widest uppercase mb-2"
     >
       {{ title }}
     </h6>

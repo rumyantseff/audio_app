@@ -2,7 +2,7 @@
   <button
     type="button"
     class="flex items-center gap-1.5 text-sm transition-colors"
-    :class="modelValue ? 'text-quanterary' : 'text-font-secondary dark:text-gray-400 hover:text-quanterary'"
+    :class="modelValue ? 'text-quanterary' : 'text-font-primary dark:text-gray-400 hover:text-quanterary'"
     @click="emit('update:modelValue', !modelValue)"
   >
     <i :class="['mdi text-base', modelValue ? 'mdi-heart' : 'mdi-heart-outline']" />
